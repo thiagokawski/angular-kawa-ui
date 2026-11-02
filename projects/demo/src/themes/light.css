@@ -1,0 +1,18 @@
+:root[data-theme-source="demo"] {
+  --kw-color-background: #fafaf9;
+  --kw-color-surface:    #ffffff;
+  --kw-color-text:       #1c1917;
+  --kw-color-text-muted: #78716c;
+  --kw-color-border:     #e7e5e4;
+
+  --kw-color-primary:   #e11d48;  --kw-color-on-primary:   #ffffff;
+  --kw-color-secondary: #7c3aed;  --kw-color-on-secondary: #ffffff;
+  --kw-color-success:   #059669;  --kw-color-on-success:   #ffffff;
+  --kw-color-warning:   #f59e0b;  --kw-color-on-warning:   #1c1917;
+  --kw-color-danger:    #b91c1c;  --kw-color-on-danger:    #ffffff;
+  --kw-color-info:      #2563eb;  --kw-color-on-info:      #ffffff;
+
+  --kw-spacing:   0.25rem;
+  --kw-radius-md: 1rem;
+  --kw-font-sans: system-ui, sans-serif;
+}

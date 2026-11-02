@@ -1,0 +1,199 @@
+@reference "../../../core/theme/tailwind.css";
+
+:where(.kw-button) {
+  @apply relative inline-grid place-items-center gap-2 px-4 py-2 rounded-md font-sans cursor-pointer select-none appearance-none no-underline bg-transparent;
+  border: 1px solid transparent;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease;
+}
+
+:where(.kw-button:disabled, .kw-button[aria-disabled='true']) {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+:where(.kw-button__content, .kw-button__loader) {
+  grid-area: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: inherit;
+}
+
+:where(.kw-button__content) > :where([kw-icon-start], [kw-icon-end]) {
+  width: var(--kw-icon-size, 1.25em);
+  height: var(--kw-icon-size, 1.25em);
+  flex-shrink: 0;
+}
+
+:where(.kw-button__spinner) {
+  --kw-spinner-size: var(--kw-icon-size, 1.25em);
+}
+
+:where(.kw-button--primary:focus-visible) {
+  outline: 2px solid var(--kw-color-primary);
+  outline-offset: 2px;
+}
+
+:where(.kw-button--primary.kw-button--solid) {
+  @apply bg-primary text-on-primary;
+}
+
+:where(.kw-button--primary.kw-button--solid:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-primary-hover;
+}
+
+:where(.kw-button--primary.kw-button--outline) {
+  @apply border-primary text-primary;
+}
+
+:where(.kw-button--primary.kw-button--outline:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-primary-soft;
+}
+
+:where(.kw-button--primary.kw-button--ghost) {
+  @apply text-primary;
+}
+
+:where(.kw-button--primary.kw-button--ghost:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-primary-soft;
+}
+
+:where(.kw-button--secondary:focus-visible) {
+  outline: 2px solid var(--kw-color-secondary);
+  outline-offset: 2px;
+}
+:where(.kw-button--secondary.kw-button--solid) {
+  @apply bg-secondary text-on-secondary;
+}
+:where(.kw-button--secondary.kw-button--solid:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-secondary-hover;
+}
+:where(.kw-button--secondary.kw-button--outline) {
+  @apply border-secondary text-secondary;
+}
+:where(.kw-button--secondary.kw-button--outline:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-secondary-soft;
+}
+:where(.kw-button--secondary.kw-button--ghost) {
+  @apply text-secondary;
+}
+:where(.kw-button--secondary.kw-button--ghost:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-secondary-soft;
+}
+
+:where(.kw-button--success:focus-visible) {
+  outline: 2px solid var(--kw-color-success);
+  outline-offset: 2px;
+}
+:where(.kw-button--success.kw-button--solid) {
+  @apply bg-success text-on-success;
+}
+:where(.kw-button--success.kw-button--solid:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-success-hover;
+}
+:where(.kw-button--success.kw-button--outline) {
+  @apply border-success text-success;
+}
+:where(.kw-button--success.kw-button--outline:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-success-soft;
+}
+:where(.kw-button--success.kw-button--ghost) {
+  @apply text-success;
+}
+:where(.kw-button--success.kw-button--ghost:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-success-soft;
+}
+
+:where(.kw-button--warning:focus-visible) {
+  outline: 2px solid var(--kw-color-warning);
+  outline-offset: 2px;
+}
+:where(.kw-button--warning.kw-button--solid) {
+  @apply bg-warning text-on-warning;
+}
+:where(.kw-button--warning.kw-button--solid:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-warning-hover;
+}
+:where(.kw-button--warning.kw-button--outline) {
+  @apply border-warning text-warning;
+}
+:where(.kw-button--warning.kw-button--outline:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-warning-soft;
+}
+:where(.kw-button--warning.kw-button--ghost) {
+  @apply text-warning;
+}
+:where(.kw-button--warning.kw-button--ghost:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-warning-soft;
+}
+
+:where(.kw-button--danger:focus-visible) {
+  outline: 2px solid var(--kw-color-danger);
+  outline-offset: 2px;
+}
+:where(.kw-button--danger.kw-button--solid) {
+  @apply bg-danger text-on-danger;
+}
+:where(.kw-button--danger.kw-button--solid:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-danger-hover;
+}
+:where(.kw-button--danger.kw-button--outline) {
+  @apply border-danger text-danger;
+}
+:where(.kw-button--danger.kw-button--outline:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-danger-soft;
+}
+:where(.kw-button--danger.kw-button--ghost) {
+  @apply text-danger;
+}
+:where(.kw-button--danger.kw-button--ghost:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-danger-soft;
+}
+
+:where(.kw-button--info:focus-visible) {
+  outline: 2px solid var(--kw-color-info);
+  outline-offset: 2px;
+}
+:where(.kw-button--info.kw-button--solid) {
+  @apply bg-info text-on-info;
+}
+:where(.kw-button--info.kw-button--solid:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-info-hover;
+}
+:where(.kw-button--info.kw-button--outline) {
+  @apply border-info text-info;
+}
+:where(.kw-button--info.kw-button--outline:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-info-soft;
+}
+:where(.kw-button--info.kw-button--ghost) {
+  @apply text-info;
+}
+:where(.kw-button--info.kw-button--ghost:hover:not(:disabled, [aria-disabled='true'])) {
+  @apply bg-info-soft;
+}
+
+:where(.kw-button--icon-only) {
+  @apply p-2 gap-0 aspect-square;
+}
+:where(.kw-button--custom) {
+  @apply p-0 gap-0;
+}
+:where(.kw-button--rounded) {
+  @apply rounded-full;
+}
+:where(.kw-button--loading) {
+  opacity: 1;
+  cursor: progress;
+}
+:where(.kw-button--loading) > :where(.kw-button__content) {
+  opacity: 0;
+}
+:where(.kw-button--icon-only) :where(.kw-button__loading-text) {
+  @apply sr-only;
+}

@@ -1,0 +1,38 @@
+@reference "../../../core/theme/tailwind.css";
+
+:where(.kw-form-field) {
+  @apply flex flex-col gap-1;
+}
+
+:where(.kw-label) {
+  @apply text-sm font-medium text-text;
+}
+
+:where(.kw-label--required)::after {
+  content: ' *';
+  color: var(--kw-color-danger);
+}
+
+:where(.kw-hint) {
+  @apply text-xs text-text-muted;
+}
+
+:where(.kw-error) {
+  @apply text-xs text-danger;
+}
+
+:where(.kw-form-field:not(.kw-form-field--invalid)) :where(.kw-error) {
+  display: none;
+}
+
+:where(.kw-form-field--invalid) :where(.kw-hint) {
+  display: none;
+}
+
+:where(.kw-form-field--invalid) :where(.kw-label) {
+  @apply text-danger;
+}
+
+:where(.kw-form-field:has(.kw-input:disabled)) :where(.kw-label) {
+  @apply opacity-50;
+}

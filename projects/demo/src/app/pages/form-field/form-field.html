@@ -1,0 +1,224 @@
+<div class="page">
+  <header class="page__header">
+    <h1>Form Field</h1>
+    <p><code>kw-form-field</code> — envolve um campo com rótulo, dica e mensagem de erro.</p>
+  </header>
+
+  <div class="page__sections">
+    <app-example
+      title="Label e hint"
+      description="Campo simples com rótulo ligado ao input e dica abaixo. Clicar no rótulo foca o campo."
+      [html]="examples.labelHint.html"
+    >
+      <kw-form-field class="field">
+        <label kw-label>Nome de exibição</label>
+        <input kw-input placeholder="Como você quer aparecer" />
+        <span kw-hint>Aparece no seu perfil.</span>
+      </kw-form-field>
+    </app-example>
+
+    <app-example
+      title="Obrigatório"
+      description="O * aparece no rótulo só nos campos obrigatórios. Detectado por required nativo, Validators.required e required() do Signal Forms."
+      [html]="examples.required.html"
+      [ts]="examples.required.ts"
+    >
+      <kw-form-field class="field">
+        <label kw-label>Required nativo</label>
+        <input kw-input required />
+        <span kw-hint>Atributo required no input.</span>
+      </kw-form-field>
+
+      <kw-form-field class="field">
+        <label kw-label>Validators.required</label>
+        <input kw-input [formControl]="reactiveRequired" />
+        <span kw-hint>Reactive Forms.</span>
+      </kw-form-field>
+
+      <kw-form-field class="field">
+        <label kw-label>required()</label>
+        <input kw-input [formField]="requiredForm.name" />
+        <span kw-hint>Signal Forms.</span>
+      </kw-form-field>
+
+      <kw-form-field class="field">
+        <label kw-label>Opcional</label>
+        <input kw-input />
+        <span kw-hint>Sem obrigatoriedade.</span>
+      </kw-form-field>
+    </app-example>
+
+    <app-example
+      title="Erros projetados (Reactive Forms)"
+      description="Mensagens de erro via [kw-error], uma por chave de erro, com @if no template."
+      [html]="examples.reactiveErrors.html"
+      [ts]="examples.reactiveErrors.ts"
+    >
+      <kw-form-field class="field">
+        <label kw-label>E-mail</label>
+        <input kw-input [formControl]="reactiveEmail" placeholder="seu e-mail" />
+        <span kw-hint>Usaremos para contato.</span>
+        @if (reactiveEmail.hasError('required')) {
+          <span kw-error>Informe o e-mail.</span>
+        }
+        @if (reactiveEmail.hasError('email')) {
+          <span kw-error>E-mail inválido.</span>
+        }
+      </kw-form-field>
+    </app-example>
+
+    <app-example
+      title="Erros projetados (Signal Forms)"
+      description="O mesmo padrão com form() e [formField], lendo os erros pelo kind."
+      [html]="examples.signalErrors.html"
+      [ts]="examples.signalErrors.ts"
+    >
+      <kw-form-field class="field">
+        <label kw-label>E-mail</label>
+        <input kw-input [formField]="emailForm.email" placeholder="seu e-mail" />
+        <span kw-hint>Usaremos para contato.</span>
+        @if (hasKind(emailForm.email().errors(), 'required')) {
+          <span kw-error>Informe o e-mail.</span>
+        }
+        @if (hasKind(emailForm.email().errors(), 'email')) {
+          <span kw-error>E-mail inválido.</span>
+        }
+      </kw-form-field>
+    </app-example>
+
+    <app-example
+      title="Mensagens automáticas"
+      description="Sem [kw-error] projetado: quando o campo é inválido, a mensagem vem do mapa registrado em provideKwErrorMessages desta página."
+      [html]="examples.autoMessages.html"
+      [ts]="examples.autoMessages.ts"
+    >
+      <kw-form-field class="field">
+        <label kw-label>Nome (Reactive)</label>
+        <input kw-input [formControl]="reactiveAuto" />
+        <span kw-hint>Mínimo de 3 caracteres.</span>
+      </kw-form-field>
+
+      <kw-form-field class="field">
+        <label kw-label>Nome (Signal Forms)</label>
+        <input kw-input [formField]="autoForm.name" />
+        <span kw-hint>Mínimo de 3 caracteres.</span>
+      </kw-form-field>
+    </app-example>
+
+    <app-example
+      title="Configurando mensagens"
+      description="provideKwErrorMessages nos providers do componente. O campo abaixo usa pattern, que não tem entrada no mapa, então cai na chave default."
+      [html]="examples.customMessages.html"
+      [ts]="examples.customMessages.ts"
+    >
+      <kw-form-field class="field">
+        <label kw-label>Código</label>
+        <input kw-input [formField]="codeForm.code" placeholder="ABC" />
+        <span kw-hint>Três letras maiúsculas.</span>
+      </kw-form-field>
+    </app-example>
+
+    <app-example
+      title="Com input group"
+      description="kw-form-field envolvendo um kw-input-group com ícone de prefixo, mostrando rótulo, dica e erro."
+      [html]="examples.inputGroup.html"
+      [ts]="examples.inputGroup.ts"
+    >
+      <kw-form-field class="field">
+        <label kw-label>E-mail de contato</label>
+        <kw-input-group>
+          <svg
+            kw-prefix
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 6-10 7L2 6" />
+          </svg>
+          <input kw-input [formField]="inputGroupForm.email" placeholder="seu e-mail" />
+        </kw-input-group>
+        <span kw-hint>Enviaremos a confirmação para este endereço.</span>
+        @if (hasKind(inputGroupForm.email().errors(), 'required')) {
+          <span kw-error>Informe o e-mail.</span>
+        }
+        @if (hasKind(inputGroupForm.email().errors(), 'email')) {
+          <span kw-error>E-mail inválido.</span>
+        }
+      </kw-form-field>
+    </app-example>
+
+    <app-example
+      title="Formulário completo"
+      description="Nome, e-mail e senha em Signal Forms. Enviar marca todos os campos como tocados e só executa a ação se o formulário for válido."
+      [html]="examples.fullForm.html"
+      [ts]="examples.fullForm.ts"
+    >
+      <form class="form" (submit)="onSubmit($event)" novalidate>
+        <kw-form-field class="field">
+          <label kw-label>Nome</label>
+          <input kw-input [formField]="fullForm.name" placeholder="seu nome" />
+          @if (hasKind(fullForm.name().errors(), 'required')) {
+            <span kw-error>Informe seu nome.</span>
+          }
+        </kw-form-field>
+
+        <kw-form-field class="field">
+          <label kw-label>E-mail</label>
+          <input kw-input [formField]="fullForm.email" placeholder="seu e-mail" />
+          @if (hasKind(fullForm.email().errors(), 'required')) {
+            <span kw-error>Informe o e-mail.</span>
+          }
+          @if (hasKind(fullForm.email().errors(), 'email')) {
+            <span kw-error>E-mail inválido.</span>
+          }
+        </kw-form-field>
+
+        <kw-form-field class="field">
+          <label kw-label>Senha</label>
+          <kw-input-group>
+            <input
+              kw-input
+              [type]="showPassword() ? 'text' : 'password'"
+              [formField]="fullForm.password"
+            />
+            <button
+              kw-button
+              type="button"
+              kw-suffix
+              variant="ghost"
+              iconOnly
+              [attr.aria-label]="showPassword() ? 'Ocultar senha' : 'Mostrar senha'"
+              (click)="togglePassword()"
+            >
+              <svg
+                kw-icon-start
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                aria-hidden="true"
+              >
+                <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" />
+                <circle cx="12" cy="12" r="3" />
+              </svg>
+            </button>
+          </kw-input-group>
+          <span kw-hint>Mínimo de 8 caracteres.</span>
+          @if (hasKind(fullForm.password().errors(), 'required')) {
+            <span kw-error>Informe a senha.</span>
+          }
+          @if (hasKind(fullForm.password().errors(), 'minLength')) {
+            <span kw-error>Use pelo menos 8 caracteres.</span>
+          }
+        </kw-form-field>
+
+        <button kw-button type="submit" [loading]="sending()" loadingText="Enviando…">
+          Enviar
+        </button>
+      </form>
+    </app-example>
+  </div>
+</div>

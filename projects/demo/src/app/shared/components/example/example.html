@@ -1,0 +1,32 @@
+<header class="example__header">
+  <h2 class="example__title">{{ title() }}</h2>
+  @if (description()) {
+    <p class="example__description">{{ description() }}</p>
+  }
+</header>
+
+<div class="example__preview">
+  <ng-content />
+</div>
+
+<div class="example__code">
+  <div class="example__code-header">
+    <span class="example__label">HTML</span>
+    <button type="button" class="example__copy" (click)="copy('html', html())">
+      {{ copied() === 'html' ? 'Copiado' : 'Copiar' }}
+    </button>
+  </div>
+  <pre><code>{{ html() }}</code></pre>
+</div>
+
+@if (ts(); as tsCode) {
+  <div class="example__code">
+    <div class="example__code-header">
+      <span class="example__label">TS</span>
+      <button type="button" class="example__copy" (click)="copy('ts', tsCode)">
+        {{ copied() === 'ts' ? 'Copiado' : 'Copiar' }}
+      </button>
+    </div>
+    <pre><code>{{ tsCode }}</code></pre>
+  </div>
+}

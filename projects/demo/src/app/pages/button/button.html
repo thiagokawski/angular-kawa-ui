@@ -1,0 +1,203 @@
+<div class="page">
+  <header class="page__header">
+    <h1>Button</h1>
+    <p><code>button[kw-button]</code>, <code>a[kw-button]</code> — botão de ação da biblioteca.</p>
+  </header>
+
+  <div class="page__sections">
+    <app-example
+      title="Cores"
+      description="Um botão solid para cada uma das seis cores."
+      [html]="examples.colors"
+    >
+      <button kw-button color="primary">Primary</button>
+      <button kw-button color="secondary">Secondary</button>
+      <button kw-button color="success">Success</button>
+      <button kw-button color="warning">Warning</button>
+      <button kw-button color="danger">Danger</button>
+      <button kw-button color="info">Info</button>
+    </app-example>
+
+    <app-example
+      title="Variants"
+      description="solid, outline e ghost, na cor primary."
+      [html]="examples.variants"
+    >
+      <button kw-button variant="solid">Solid</button>
+      <button kw-button variant="outline">Outline</button>
+      <button kw-button variant="ghost">Ghost</button>
+    </app-example>
+
+    <app-example
+      title="Matriz cor × variant"
+      description="As 18 combinações, uma linha por variant. As listas colors e variants ficam no componente."
+      [html]="examples.matrix"
+    >
+      <div class="matrix">
+        @for (variant of variants; track variant) {
+          <div class="matrix__row">
+            <span class="matrix__label">{{ variant }}</span>
+            @for (color of colors; track color) {
+              <button kw-button [color]="color" [variant]="variant">{{ color }}</button>
+            }
+          </div>
+        }
+      </div>
+    </app-example>
+
+    <app-example
+      title="Com ícone"
+      description="Ícones nos slots [kw-icon-start] e [kw-icon-end], com SVG inline."
+      [html]="examples.icons"
+    >
+      <button kw-button>
+        <svg
+          kw-icon-start
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <path d="M19 12H5M11 19l-7-7 7-7" />
+        </svg>
+        Voltar
+      </button>
+      <button kw-button>
+        Avançar
+        <svg
+          kw-icon-end
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <path d="M5 12h14M13 5l7 7-7 7" />
+        </svg>
+      </button>
+    </app-example>
+
+    <app-example
+      title="Somente ícone"
+      description="iconOnly deixa o botão quadrado. Sem texto visível, sempre use aria-label."
+      [html]="examples.iconOnly"
+    >
+      <button kw-button iconOnly aria-label="Adicionar">
+        <svg
+          kw-icon-start
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <path d="M12 5v14M5 12h14" />
+        </svg>
+      </button>
+      <button kw-button iconOnly rounded aria-label="Adicionar">
+        <svg
+          kw-icon-start
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <path d="M12 5v14M5 12h14" />
+        </svg>
+      </button>
+    </app-example>
+
+    <app-example
+      title="Arredondado"
+      description="rounded aplica bordas totalmente arredondadas."
+      [html]="examples.rounded"
+    >
+      <button kw-button rounded>Arredondado</button>
+      <button kw-button rounded variant="outline">Arredondado outline</button>
+    </app-example>
+
+    <app-example
+      title="Loading"
+      description="loading mostra o spinner e bloqueia o clique. loadingText exibe um texto ao lado. Simular envio liga loading por 2 s."
+      [html]="examples.loading"
+      [ts]="examples.loadingTs"
+    >
+      <button kw-button loading aria-label="Carregando"></button>
+      <button kw-button loading loadingText="Salvando…">Salvar</button>
+      <button kw-button [loading]="sending()" (click)="simulate()">Simular envio</button>
+    </app-example>
+
+    <app-example
+      title="Spinner customizado"
+      description="Conteúdo no slot [kw-loading] substitui o spinner padrão."
+      [html]="examples.customSpinner"
+    >
+      <button kw-button color="secondary" variant="outline" loading loadingText="Enviando…">
+        <kw-spinner kw-loading color="secondary" decorative style="--kw-spinner-size: 1.5em" />
+        Enviar
+      </button>
+    </app-example>
+
+    <app-example
+      title="Desabilitado"
+      description="No button use o atributo disabled nativo. No a, use aria-disabled."
+      [html]="examples.disabled"
+    >
+      <button kw-button disabled>Button desabilitado</button>
+      <a kw-button aria-disabled="true">Link desabilitado</a>
+    </app-example>
+
+    <app-example
+      title="Como link"
+      description="a[kw-button] com href. Use target e rel quando abrir em nova aba."
+      [html]="examples.link"
+    >
+      <a kw-button href="https://angular.dev" target="_blank" rel="noopener">Abrir angular.dev</a>
+    </app-example>
+
+    <app-example
+      title="Custom"
+      description="custom zera o padding e o gap do botão, deixando o conteúdo controlar o espaçamento. Aqui o span interno define o próprio padding."
+      [html]="examples.custom"
+    >
+      <button kw-button custom>
+        <span style="padding: 0.5rem 1.25rem">Padding próprio</span>
+      </button>
+    </app-example>
+
+    <app-example
+      title="Tamanho do ícone"
+      description="Por padrão o ícone usa 1.25em. Defina --kw-icon-size para ajustar."
+      [html]="examples.iconSize"
+    >
+      <button kw-button>
+        <svg
+          kw-icon-start
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <path d="M19 12H5M11 19l-7-7 7-7" />
+        </svg>
+        Tamanho padrão
+      </button>
+      <button kw-button style="--kw-icon-size: 1rem">
+        <svg
+          kw-icon-start
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <path d="M19 12H5M11 19l-7-7 7-7" />
+        </svg>
+        Ícone 1rem
+      </button>
+    </app-example>
+  </div>
+</div>

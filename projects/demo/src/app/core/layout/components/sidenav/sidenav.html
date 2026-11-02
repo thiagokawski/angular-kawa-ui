@@ -1,0 +1,16 @@
+<div class="brand">Kawa UI</div>
+
+<nav>
+  @for (item of items; track item.path) {
+    <a [routerLink]="item.path" routerLinkActive="active">{{ item.label }}</a>
+  }
+
+  @for (group of groups; track group.label) {
+    <div class="group">
+      <span class="group-label">{{ group.label }}</span>
+      @for (item of group.items; track item.path) {
+        <a [routerLink]="item.path" routerLinkActive="active">{{ item.label }}</a>
+      }
+    </div>
+  }
+</nav>

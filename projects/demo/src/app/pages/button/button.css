@@ -1,0 +1,18 @@
+.matrix {
+  display: grid;
+  gap: calc(var(--kw-spacing) * 3);
+  width: 100%;
+}
+
+.matrix__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--kw-spacing) * 2);
+}
+
+.matrix__label {
+  min-width: 4.5rem;
+  font-size: 0.875rem;
+  color: var(--kw-color-text-muted);
+}

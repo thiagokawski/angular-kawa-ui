@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-*: initial;
+  --radius-*: initial;
+  --font-*: initial;
+
+  --color-background: var(--kw-color-background);
+  --color-surface:    var(--kw-color-surface);
+  --color-text:       var(--kw-color-text);
+  --color-text-muted: var(--kw-color-text-muted);
+  --color-border:     var(--kw-color-border);
+
+  --color-primary:       var(--kw-color-primary);
+  --color-on-primary:    var(--kw-color-on-primary);
+  --color-primary-hover: var(--kw-color-primary-hover, color-mix(in oklab, var(--kw-color-primary), black 12%));
+  --color-primary-soft:  var(--kw-color-primary-soft, color-mix(in oklab, var(--kw-color-primary) 15%, var(--kw-color-surface)));
+
+  --color-secondary:       var(--kw-color-secondary);
+  --color-on-secondary:    var(--kw-color-on-secondary);
+  --color-secondary-hover: var(--kw-color-secondary-hover, color-mix(in oklab, var(--kw-color-secondary), black 12%));
+  --color-secondary-soft:  var(--kw-color-secondary-soft, color-mix(in oklab, var(--kw-color-secondary) 15%, var(--kw-color-surface)));
+
+  --color-success:       var(--kw-color-success);
+  --color-on-success:    var(--kw-color-on-success);
+  --color-success-hover: var(--kw-color-success-hover, color-mix(in oklab, var(--kw-color-success), black 12%));
+  --color-success-soft:  var(--kw-color-success-soft, color-mix(in oklab, var(--kw-color-success) 15%, var(--kw-color-surface)));
+
+  --color-warning:       var(--kw-color-warning);
+  --color-on-warning:    var(--kw-color-on-warning);
+  --color-warning-hover: var(--kw-color-warning-hover, color-mix(in oklab, var(--kw-color-warning), black 12%));
+  --color-warning-soft:  var(--kw-color-warning-soft, color-mix(in oklab, var(--kw-color-warning) 15%, var(--kw-color-surface)));
+
+  --color-danger:       var(--kw-color-danger);
+  --color-on-danger:    var(--kw-color-on-danger);
+  --color-danger-hover: var(--kw-color-danger-hover, color-mix(in oklab, var(--kw-color-danger), black 12%));
+  --color-danger-soft:  var(--kw-color-danger-soft, color-mix(in oklab, var(--kw-color-danger) 15%, var(--kw-color-surface)));
+
+  --color-info:       var(--kw-color-info);
+  --color-on-info:    var(--kw-color-on-info);
+  --color-info-hover: var(--kw-color-info-hover, color-mix(in oklab, var(--kw-color-info), black 12%));
+  --color-info-soft:  var(--kw-color-info-soft, color-mix(in oklab, var(--kw-color-info) 15%, var(--kw-color-surface)));
+
+  --spacing: var(--kw-spacing);
+  --radius-sm: var(--kw-radius-sm, calc(var(--kw-radius-md) * 0.5));
+  --radius-md: var(--kw-radius-md);
+  --radius-lg: var(--kw-radius-lg, calc(var(--kw-radius-md) * 1.5));
+  --radius-full: 9999px;
+  --font-sans: var(--kw-font-sans);
+  --font-mono: var(--kw-font-mono, ui-monospace, monospace);
+}

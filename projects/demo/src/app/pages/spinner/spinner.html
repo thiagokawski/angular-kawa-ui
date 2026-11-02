@@ -1,0 +1,71 @@
+<div class="page">
+  <header class="page__header">
+    <h1>Spinner</h1>
+    <p><code>kw-spinner</code> — indicador de carregamento.</p>
+  </header>
+
+  <div class="page__sections">
+    <app-example
+      title="Padrão"
+      description="Sem configuração. O label Carregando… não aparece na tela: fica só no DOM, oculto visualmente (sr-only), e é anunciado por leitores de tela."
+      [html]="examples.default"
+    >
+      <kw-spinner />
+    </app-example>
+
+    <app-example
+      title="Cores"
+      description="As seis cores do tema. Sem color, o spinner usa a cor do texto (currentColor)."
+      [html]="examples.colors"
+    >
+      <kw-spinner color="primary" />
+      <kw-spinner color="secondary" />
+      <kw-spinner color="success" />
+      <kw-spinner color="warning" />
+      <kw-spinner color="danger" />
+      <kw-spinner color="info" />
+    </app-example>
+
+    <app-example
+      title="Herdando a cor"
+      description="Sem color, o spinner herda a cor do elemento pai."
+      [html]="examples.inheritColor"
+    >
+      <span
+        style="
+          color: var(--kw-color-success);
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+        "
+        ><kw-spinner /> Sincronizando</span
+      >
+    </app-example>
+
+    <app-example
+      title="Label customizado"
+      description="A prop label troca o texto anunciado. Assim como no padrão, o label é sr-only: leitores de tela anunciam Buscando dados…, mas ele não aparece na tela."
+      [html]="examples.customLabel"
+    >
+      <kw-spinner label="Buscando dados…" />
+    </app-example>
+
+    <app-example
+      title="Decorativo"
+      description="Com decorative, o spinner recebe aria-hidden e não tem label: nada é anunciado. Use quando outro elemento já anuncia o carregamento (um texto ao lado ou uma região aria-live), para não repetir a informação."
+      [html]="examples.decorative"
+    >
+      <kw-spinner decorative />
+    </app-example>
+
+    <app-example
+      title="Tamanhos"
+      description="O tamanho vem de --kw-spinner-size (default 1.25em)."
+      [html]="examples.sizes"
+    >
+      <kw-spinner style="--kw-spinner-size: 1rem" />
+      <kw-spinner style="--kw-spinner-size: 2rem" />
+      <kw-spinner style="--kw-spinner-size: 3rem" />
+    </app-example>
+  </div>
+</div>

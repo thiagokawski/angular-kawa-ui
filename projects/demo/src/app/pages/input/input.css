@@ -1,0 +1,12 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--kw-spacing) * 2);
+  width: 16rem;
+  max-width: 100%;
+}
+
+.field small {
+  color: var(--kw-color-text-muted);
+  font-size: 0.75rem;
+}

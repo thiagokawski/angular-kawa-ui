@@ -1,0 +1,88 @@
+@reference "../../../core/theme/tailwind.css";
+
+:where(.kw-input) {
+  @apply w-full px-3 py-2 rounded-md font-sans bg-surface text-text appearance-none;
+  border: 1px solid var(--kw-color-border);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+:where(.kw-input)::placeholder {
+  @apply text-text-muted;
+}
+
+:where(.kw-input:focus-visible) {
+  outline: 2px solid var(--kw-color-primary);
+  outline-offset: 2px;
+}
+
+:where(.kw-input:disabled) {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+:where(.kw-input--invalid) {
+  @apply border-danger;
+}
+
+:where(.kw-input--invalid:focus-visible) {
+  outline-color: var(--kw-color-danger);
+}
+
+:where(.kw-input-group) {
+  @apply flex items-center gap-2 px-3 rounded-md bg-surface w-full;
+  border: 1px solid var(--kw-color-border);
+  transition: border-color 150ms ease;
+}
+
+:where(.kw-input-group .kw-input) {
+  border: 0;
+  outline: none;
+  background: transparent;
+  padding-inline: 0;
+  flex: 1;
+  min-width: 0;
+  border-radius: 0;
+}
+
+:where(.kw-input-group .kw-input:focus-visible) {
+  outline: none;
+}
+
+:where(.kw-input-group .kw-input:disabled) {
+  opacity: 1;
+}
+
+:where(.kw-input-group:has(.kw-input:focus-visible)) {
+  outline: 2px solid var(--kw-color-primary);
+  outline-offset: 2px;
+}
+
+:where(.kw-input-group:has(.kw-input--invalid)) {
+  border-color: var(--kw-color-danger);
+}
+
+:where(.kw-input-group:has(.kw-input--invalid):has(.kw-input:focus-visible)) {
+  outline-color: var(--kw-color-danger);
+}
+
+:where(.kw-input-group:has(.kw-input:disabled)) {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+:where(.kw-input-group) > :where([kw-prefix], [kw-suffix]) {
+  @apply inline-flex items-center text-text-muted;
+  flex-shrink: 0;
+}
+
+:where(.kw-input-group) > :where(svg[kw-prefix], svg[kw-suffix]) {
+  width: var(--kw-icon-size, 1.25em);
+  height: var(--kw-icon-size, 1.25em);
+}
+
+/* Especificidade (0,1,0) de propósito: precisa vencer `.kw-button--icon-only` independente da ordem dos CSS. */
+:where(.kw-input-group) > .kw-button {
+  @apply p-1;
+}

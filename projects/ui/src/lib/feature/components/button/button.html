@@ -1,0 +1,15 @@
+<span class="kw-button__content" [attr.aria-hidden]="loading() && hasLoadingText() ? 'true' : null">
+  <ng-content select="[kw-icon-start]" />
+  <ng-content />
+  <ng-content select="[kw-icon-end]" />
+</span>
+@if (loading()) {
+  <span class="kw-button__loader">
+    <ng-content select="[kw-loading]">
+      <kw-spinner decorative class="kw-button__spinner" />
+    </ng-content>
+    @if (hasLoadingText()) {
+      <span class="kw-button__loading-text">{{ loadingText() }}</span>
+    }
+  </span>
+}

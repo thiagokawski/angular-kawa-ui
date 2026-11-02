@@ -1,0 +1,33 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--kw-spacing) * 6);
+}
+
+.page__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--kw-spacing);
+}
+
+.page__header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+
+.page__header p {
+  margin: 0;
+  color: var(--kw-color-text-muted);
+}
+
+.page__header code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.875em;
+}
+
+.page__sections {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--kw-spacing) * 6);
+}

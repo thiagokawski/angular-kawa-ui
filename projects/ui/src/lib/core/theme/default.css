@@ -1,0 +1,18 @@
+:root {
+  --kw-color-background: #f8fafc;
+  --kw-color-surface:    #ffffff;
+  --kw-color-text:       #0f172a;
+  --kw-color-text-muted: #64748b;
+  --kw-color-border:     #e2e8f0;
+
+  --kw-color-primary:   #4f46e5;  --kw-color-on-primary:   #ffffff;
+  --kw-color-secondary: #0d9488;  --kw-color-on-secondary: #ffffff;
+  --kw-color-success:   #16a34a;  --kw-color-on-success:   #ffffff;
+  --kw-color-warning:   #f59e0b;  --kw-color-on-warning:   #1c1917;
+  --kw-color-danger:    #dc2626;  --kw-color-on-danger:    #ffffff;
+  --kw-color-info:      #0284c7;  --kw-color-on-info:      #ffffff;
+
+  --kw-spacing:   0.25rem;
+  --kw-radius-md: 0.5rem;
+  --kw-font-sans: system-ui, sans-serif;
+}

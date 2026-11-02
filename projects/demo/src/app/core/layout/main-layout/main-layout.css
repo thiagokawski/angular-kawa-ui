@@ -1,0 +1,17 @@
+:host {
+  display: flex;
+  height: 100vh;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+}
+
+main {
+  flex: 1;
+  overflow: auto;
+  padding: calc(var(--kw-spacing) * 6);
+}

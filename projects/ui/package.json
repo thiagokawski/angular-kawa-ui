@@ -1,0 +1,21 @@
+{
+  "name": "@kawa-ng/ui",
+  "version": "22.0.0",
+  "peerDependencies": {
+    "@angular/common": "^22.0.0",
+    "@angular/core": "^22.0.0",
+    "@angular/forms": "^22.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    "./themes/*": {
+      "style": "./themes/*"
+    }
+  }
+}

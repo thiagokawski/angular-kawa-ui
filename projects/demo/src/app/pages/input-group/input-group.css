@@ -1,0 +1,11 @@
+.field {
+  width: 18rem;
+  max-width: 100%;
+}
+
+.row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}

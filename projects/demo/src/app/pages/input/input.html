@@ -1,0 +1,98 @@
+<div class="page">
+  <header class="page__header">
+    <h1>Input</h1>
+    <p><code>input[kw-input]</code> — campo de entrada de texto da biblioteca.</p>
+  </header>
+
+  <div class="page__sections">
+    <app-example
+      title="Padrão"
+      description="Input de texto com placeholder."
+      [html]="examples.defaultHtml"
+    >
+      <div class="field">
+        <input kw-input type="text" placeholder="Digite algo" />
+      </div>
+    </app-example>
+
+    <app-example
+      title="Tipos"
+      description="Os tipos nativos do input (text, email, password, number, date) são repassados ao elemento."
+      [html]="examples.typesHtml"
+    >
+      <div class="field">
+        <input kw-input type="text" placeholder="text" />
+      </div>
+      <div class="field">
+        <input kw-input type="email" placeholder="email" />
+      </div>
+      <div class="field">
+        <input kw-input type="password" placeholder="password" />
+      </div>
+      <div class="field">
+        <input kw-input type="number" placeholder="number" />
+      </div>
+      <div class="field">
+        <input kw-input type="date" />
+      </div>
+    </app-example>
+
+    <app-example
+      title="Desabilitado"
+      description="Atributo disabled: sem interação e com estilo próprio."
+      [html]="examples.disabledHtml"
+    >
+      <div class="field">
+        <input kw-input type="text" placeholder="Desabilitado" disabled />
+      </div>
+    </app-example>
+
+    <app-example
+      title="Validação manual"
+      description="[valid] força o estado: false exibe a borda danger e aria-invalid; true força o estado válido."
+      [html]="examples.manualHtml"
+    >
+      <div class="field">
+        <input kw-input type="text" [valid]="false" placeholder="Forçado inválido" />
+      </div>
+      <div class="field">
+        <input kw-input type="text" [valid]="true" placeholder="Forçado válido" />
+      </div>
+    </app-example>
+
+    <app-example
+      title="Reactive Forms"
+      description="FormControl com Validators.required e Validators.email. O erro só aparece depois de tocar ou digitar; com um e-mail válido, volta ao normal."
+      [html]="examples.reactiveHtml"
+      [ts]="examples.reactiveTs"
+    >
+      <div class="field">
+        <input kw-input type="email" placeholder="nome@exemplo.com" [formControl]="emailControl" />
+        <small
+          >valid: {{ emailControl.valid }} · touched: {{ emailControl.touched }} · dirty:
+          {{ emailControl.dirty }}</small
+        >
+      </div>
+    </app-example>
+
+    <app-example
+      title="Signal Forms"
+      description="form() com required e email sobre um signal. Mesmo comportamento do exemplo de Reactive Forms: danger só após tocar ou sujar o campo."
+      [html]="examples.signalHtml"
+      [ts]="examples.signalTs"
+    >
+      <div class="field">
+        <input
+          kw-input
+          type="email"
+          placeholder="nome@exemplo.com"
+          [formField]="signalForm.email"
+        />
+        <small
+          >valid: {{ signalForm.email().valid() }} · touched: {{ signalForm.email().touched() }} ·
+          dirty: {{ signalForm.email().dirty() }}</small
+        >
+      </div>
+    </app-example>
+  </div>
+</div>

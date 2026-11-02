@@ -1,0 +1,11 @@
+@import "./themes/light.css";
+@import "./themes/dark.css";
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--kw-color-background);
+  color: var(--kw-color-text);
+  font-family: var(--kw-font-sans);
+}
