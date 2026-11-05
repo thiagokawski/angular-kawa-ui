@@ -1,0 +1,62 @@
+@reference "../../../core/theme/tailwind.css";
+
+:where(.kw-alert) {
+  @apply flex items-start gap-3 px-4 py-3 rounded-md text-text;
+  border: 1px solid;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+:where(.kw-alert--primary) {
+  @apply bg-primary-soft border-primary;
+  --kw-alert-accent: var(--kw-color-primary);
+}
+:where(.kw-alert--secondary) {
+  @apply bg-secondary-soft border-secondary;
+  --kw-alert-accent: var(--kw-color-secondary);
+}
+:where(.kw-alert--success) {
+  @apply bg-success-soft border-success;
+  --kw-alert-accent: var(--kw-color-success);
+}
+:where(.kw-alert--warning) {
+  @apply bg-warning-soft border-warning;
+  --kw-alert-accent: var(--kw-color-warning);
+}
+:where(.kw-alert--danger) {
+  @apply bg-danger-soft border-danger;
+  --kw-alert-accent: var(--kw-color-danger);
+}
+:where(.kw-alert--info) {
+  @apply bg-info-soft border-info;
+  --kw-alert-accent: var(--kw-color-info);
+}
+
+:where(.kw-alert__icon) {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: var(--kw-icon-size, 1.25em);
+  height: var(--kw-icon-size, 1.25em);
+  color: var(--kw-alert-accent);
+}
+
+:where(.kw-alert__icon) > :where(svg) {
+  width: 100%;
+  height: 100%;
+}
+
+:where(.kw-alert__body) {
+  @apply flex flex-col gap-1;
+  flex: 1;
+  min-width: 0;
+}
+
+:where(.kw-alert__body) > :where([kw-alert-title]) {
+  font-weight: 600;
+}
+
+/* Sem ícone ou sem título, o slot some e não deixa espaço vazio. Regras depois das de display acima. */
+:where(.kw-alert__icon:empty),
+:where(.kw-alert__content:empty) {
+  display: none;
+}

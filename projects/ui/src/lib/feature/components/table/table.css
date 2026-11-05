@@ -1,0 +1,94 @@
+@reference "../../../core/theme/tailwind.css";
+
+/*
+ * Tokens opcionais: --kw-table-header-background (padrão: texto a 4% sobre a superfície) e
+ * --kw-table-row-hover (padrão: texto a 4% transparente). Sem eles, o padrão vem do tema.
+ */
+
+/* Moldura: borda, raio e fundo do tema. O recorte do raio fica com overflow hidden. */
+:where(.kw-table-container) {
+  display: block;
+  overflow: hidden;
+  background: var(--kw-color-surface);
+  color: var(--kw-color-text);
+  border: 1px solid var(--kw-color-border);
+  border-radius: var(--kw-radius-lg, calc(var(--kw-radius-md) * 1.5));
+}
+
+/* A rolagem horizontal fica dentro da moldura; a página não rola na horizontal. */
+:where(.kw-table-container__scroll) {
+  overflow-x: auto;
+}
+
+:where(.kw-table-container__footer:empty) {
+  display: none;
+}
+
+:where(.kw-table-container__footer) {
+  padding: calc(var(--kw-spacing) * 3) calc(var(--kw-spacing) * 4);
+  border-top: 1px solid var(--kw-color-border);
+  color: var(--kw-color-text-muted);
+  font-size: 0.875rem;
+}
+
+:where(.kw-table) {
+  width: 100%;
+  min-width: 36rem;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--kw-color-text);
+}
+
+:where(.kw-table th),
+:where(.kw-table td) {
+  padding: calc(var(--kw-spacing) * 3) calc(var(--kw-spacing) * 4);
+  text-align: start;
+  vertical-align: middle;
+}
+
+:where(.kw-table--dense th),
+:where(.kw-table--dense td) {
+  padding: calc(var(--kw-spacing) * 2) calc(var(--kw-spacing) * 3);
+}
+
+/* Cabeçalho: fundo levemente elevado, texto secundário menor. */
+:where(.kw-table thead th) {
+  background: var(
+    --kw-table-header-background,
+    color-mix(in oklab, var(--kw-color-text) 4%, var(--kw-color-surface))
+  );
+  color: var(--kw-color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1rem;
+  border-bottom: 1px solid var(--kw-color-border);
+}
+
+/* Filete entre linhas, sem filete na primeira linha do corpo. */
+:where(.kw-table tbody > tr + tr > *) {
+  border-top: 1px solid var(--kw-color-border);
+}
+
+:where(.kw-table tbody > tr) {
+  transition: background 150ms ease;
+}
+
+:where(.kw-table tbody > tr:hover) {
+  background: var(--kw-table-row-hover, color-mix(in oklab, var(--kw-color-text) 4%, transparent));
+}
+
+/* Utilitários de célula. */
+:where(.kw-table [kw-cell-align='end']) {
+  text-align: end;
+  white-space: nowrap;
+}
+
+:where(.kw-table [kw-cell-align='center']) {
+  text-align: center;
+}
+
+:where(.kw-table [kw-cell-muted]) {
+  color: var(--kw-color-text-muted);
+}

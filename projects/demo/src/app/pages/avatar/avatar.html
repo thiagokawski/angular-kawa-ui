@@ -1,0 +1,54 @@
+<div class="page">
+  <header class="page__header">
+    <h1>Avatar</h1>
+    <p><code>kw-avatar</code> — avatar circular com foto ou iniciais.</p>
+  </header>
+
+  <div class="page__sections">
+    <app-example
+      title="Tamanhos"
+      description="sm (32px), md (40px, padrão) e lg (48px). Sem src, mostra as iniciais de name."
+      [html]="examples.sizes"
+    >
+      <div class="row">
+        @for (size of sizes; track size) {
+          <kw-avatar name="Marina Souza" [size]="size" />
+        }
+      </div>
+    </app-example>
+
+    <app-example
+      title="Iniciais"
+      description="Padrão: primeira letra das duas primeiras palavras de name. initials substitui esse cálculo."
+      [html]="examples.initials"
+    >
+      <div class="row">
+        <kw-avatar name="Marina Souza" />
+        <kw-avatar name="Ana" />
+        <kw-avatar name="Carlos Eduardo Lima" />
+        <kw-avatar name="Marina Souza" initials="AR" />
+      </div>
+    </app-example>
+
+    <app-example
+      title="Foto"
+      description="Com src, mostra a imagem com name como texto alternativo."
+      [html]="examples.photo"
+    >
+      <div class="row">
+        <kw-avatar name="Marina Souza" [src]="photo" />
+        <kw-avatar name="Marina Souza" [src]="photo" size="lg" />
+      </div>
+    </app-example>
+
+    <app-example
+      title="Foto que falha"
+      description="Se a imagem não carregar, o componente volta às iniciais."
+      [html]="examples.broken"
+    >
+      <div class="row">
+        <kw-avatar name="Marina Souza" [src]="brokenPhoto" />
+      </div>
+    </app-example>
+  </div>
+</div>

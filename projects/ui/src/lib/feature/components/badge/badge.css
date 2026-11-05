@@ -1,0 +1,79 @@
+:where(.kw-badge-host) {
+  position: relative;
+}
+
+:where(.kw-badge) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 9999px;
+  box-shadow: 0 0 0 2px var(--kw-badge-ring, var(--kw-color-background));
+  font-family: var(--kw-font-sans);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  line-height: 1rem;
+  white-space: nowrap;
+}
+
+:where(.kw-badge--dot) {
+  width: 8px;
+  height: 8px;
+}
+
+:where(.kw-badge--count) {
+  height: 16px;
+  min-width: 16px;
+  padding-inline: 4px;
+}
+
+:where(.kw-badge--primary) {
+  background: var(--kw-color-primary);
+  color: var(--kw-color-on-primary);
+}
+
+:where(.kw-badge--secondary) {
+  background: var(--kw-color-secondary);
+  color: var(--kw-color-on-secondary);
+}
+
+:where(.kw-badge--success) {
+  background: var(--kw-color-success);
+  color: var(--kw-color-on-success);
+}
+
+:where(.kw-badge--warning) {
+  background: var(--kw-color-warning);
+  color: var(--kw-color-on-warning);
+}
+
+:where(.kw-badge--danger) {
+  background: var(--kw-color-danger);
+  color: var(--kw-color-on-danger);
+}
+
+:where(.kw-badge--info) {
+  background: var(--kw-color-info);
+  color: var(--kw-color-on-info);
+}
+
+:where(.kw-badge__sr-only) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Deve vir por último: sem isso, o display de .kw-badge vence o atributo hidden. */
+:where(.kw-badge[hidden], .kw-badge__sr-only[hidden]) {
+  display: none;
+}

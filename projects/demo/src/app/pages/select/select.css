@@ -1,0 +1,31 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--kw-spacing) * 2);
+  width: 16rem;
+  max-width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--kw-spacing) * 3);
+}
+
+.row > input,
+.row > select {
+  width: 12rem;
+  max-width: 100%;
+}
+
+.field small,
+.example__preview > small {
+  color: var(--kw-color-text-muted);
+  font-size: 0.75rem;
+}
+
+.row > span {
+  color: var(--kw-color-text);
+  font-size: 0.875rem;
+}

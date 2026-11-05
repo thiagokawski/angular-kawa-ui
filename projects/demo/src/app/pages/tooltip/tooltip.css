@@ -1,0 +1,12 @@
+.tooltip-demo__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--kw-spacing) * 3);
+}
+
+.tooltip-demo__edge {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}

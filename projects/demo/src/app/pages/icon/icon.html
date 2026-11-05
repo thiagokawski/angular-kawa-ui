@@ -1,0 +1,67 @@
+<div class="page">
+  <header class="page__header">
+    <h1>Icon</h1>
+    <p>
+      <code>kw-icon</code> — ícone de traço 24×24. Os desenhos são registrados pelo app com
+      <code>provideKwIcons</code>.
+    </p>
+  </header>
+
+  <div class="page__sections">
+    <app-example
+      title="Tamanhos"
+      description="sm (16px), md (20px) e lg (24px, padrão)."
+      [html]="examples.sizes"
+      [ts]="registryTs"
+    >
+      <kw-icon name="search" size="sm" />
+      <kw-icon name="search" size="md" />
+      <kw-icon name="search" />
+    </app-example>
+
+    <app-example
+      title="Cor herdada"
+      description="O ícone usa a cor do texto pai (currentColor)."
+      [html]="examples.color"
+    >
+      <span class="icon-demo__success">
+        <kw-icon name="check" />
+      </span>
+    </app-example>
+
+    <app-example
+      title="Com label"
+      description="Com label, o ícone vira uma imagem com texto alternativo. Sem label, ele fica oculto para leitores de tela."
+      [html]="examples.label"
+    >
+      <kw-icon name="home" label="Início" />
+      <kw-icon name="home" />
+    </app-example>
+
+    <app-example
+      title="Espessura do traço"
+      description="--kw-icon-stroke-width define a espessura do traço (padrão 2)."
+      [html]="examples.strokeWidth"
+    >
+      <div style="display: contents; --kw-icon-stroke-width: 1">
+        <kw-icon name="bell" />
+      </div>
+      <kw-icon name="bell" />
+    </app-example>
+
+    <app-example
+      title="Galeria"
+      description="Os cinco desenhos registrados nesta página, no tamanho padrão."
+      [html]="examples.gallery"
+    >
+      <div class="icon-gallery">
+        @for (name of names; track name) {
+          <div class="icon-gallery__item">
+            <kw-icon [name]="name" [label]="name" />
+            <span>{{ name }}</span>
+          </div>
+        }
+      </div>
+    </app-example>
+  </div>
+</div>

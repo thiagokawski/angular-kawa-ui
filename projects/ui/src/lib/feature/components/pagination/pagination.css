@@ -1,0 +1,38 @@
+/* Token opcional: --kw-pagination-active-background. Sem ele, o padrão é --kw-color-primary-soft. */
+:where(.kw-pagination) {
+  display: block;
+}
+
+:where(.kw-pagination__list) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: calc(var(--kw-spacing) * 1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:where(.kw-pagination__list > li) {
+  display: flex;
+}
+
+:where(.kw-pagination__ellipsis) {
+  display: inline-grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-family: var(--kw-font-sans);
+  font-size: 0.875rem;
+  color: var(--kw-color-text-muted);
+  user-select: none;
+}
+
+/*
+ * Página atual: precisa vencer o fundo transparente e a cor do KwButton ghost, que também têm
+ * especificidade 0. Por isso a regra usa um seletor de descendente, com especificidade maior.
+ */
+.kw-pagination .kw-pagination__page[aria-current='page'] {
+  background: var(--kw-pagination-active-background, var(--kw-color-primary-soft));
+  color: var(--kw-color-text);
+}

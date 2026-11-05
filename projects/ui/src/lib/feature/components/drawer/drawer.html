@@ -1,0 +1,12 @@
+<dialog
+  #panel
+  class="kw-drawer__panel"
+  tabindex="-1"
+  [class.kw-drawer__panel--end]="position() === 'end'"
+  [attr.aria-label]="label()"
+  (cancel)="onCancel($event)"
+  (close)="onClose()"
+  (click)="onBackdropClick($event)"
+>
+  <ng-content />
+</dialog>

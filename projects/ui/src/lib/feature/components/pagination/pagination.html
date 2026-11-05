@@ -1,0 +1,67 @@
+@if (pageCount() > 1) {
+  <nav class="kw-pagination__nav" [attr.aria-label]="label()">
+    <ul class="kw-pagination__list">
+      <li>
+        <button
+          kw-icon-button
+          type="button"
+          variant="ghost"
+          [label]="previousLabel()"
+          [disabled]="currentPage() <= 1"
+          (click)="goTo(currentPage() - 1)"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+      </li>
+
+      @for (item of items(); track $index) {
+        <li>
+          @if (item === '…') {
+            <span class="kw-pagination__ellipsis">…</span>
+          } @else {
+            <button
+              kw-icon-button
+              type="button"
+              variant="ghost"
+              class="kw-pagination__page"
+              [label]="'Página ' + item"
+              [attr.aria-current]="item === currentPage() ? 'page' : null"
+              (click)="goTo(item)"
+            >
+              {{ item }}
+            </button>
+          }
+        </li>
+      }
+
+      <li>
+        <button
+          kw-icon-button
+          type="button"
+          variant="ghost"
+          [label]="nextLabel()"
+          [disabled]="currentPage() >= pageCount()"
+          (click)="goTo(currentPage() + 1)"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
+      </li>
+    </ul>
+  </nav>
+}

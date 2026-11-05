@@ -1,0 +1,108 @@
+<div class="page">
+  <header class="page__header">
+    <h1>Select</h1>
+    <p><code>select[kw-select]</code> — lista de seleção nativa com o visual do input.</p>
+  </header>
+
+  <div class="page__sections">
+    <app-example
+      title="Padrão"
+      description="Select com opções nativas. A seta é desenhada em CSS e o teclado segue o comportamento do elemento nativo."
+      [html]="examples.defaultHtml"
+    >
+      <div class="field">
+        <select kw-select aria-label="Perfil">
+          <option value="" disabled selected>Selecione um perfil</option>
+          @for (profile of profiles; track profile) {
+            <option [value]="profile">{{ profile }}</option>
+          }
+        </select>
+      </div>
+    </app-example>
+
+    <app-example
+      title="Ao lado de um input"
+      description="Mesma altura, borda, raio e foco do kw-input."
+      [html]="examples.sideBySideHtml"
+    >
+      <div class="row">
+        <input kw-input type="text" placeholder="Nome" />
+        <select kw-select aria-label="Perfil">
+          <option value="" disabled selected>Perfil</option>
+          @for (profile of profiles; track profile) {
+            <option [value]="profile">{{ profile }}</option>
+          }
+        </select>
+      </div>
+    </app-example>
+
+    <app-example
+      title="Com rótulo e erro (Reactive Forms)"
+      description="Dentro de kw-form-field, o rótulo aponta para o select e o erro aparece depois de tocar no campo, com aria-invalid."
+      [html]="examples.reactiveHtml"
+      [ts]="examples.reactiveTs"
+    >
+      <kw-form-field class="field">
+        <label kw-label>Perfil</label>
+        <select kw-select [formControl]="reactiveControl">
+          <option value="" disabled>Selecione um perfil</option>
+          @for (profile of profiles; track profile) {
+            <option [value]="profile">{{ profile }}</option>
+          }
+        </select>
+        <span kw-hint>Define o que o usuário pode fazer na empresa.</span>
+        @if (reactiveControl.hasError('required')) {
+          <span kw-error>Selecione um perfil.</span>
+        }
+      </kw-form-field>
+      <small>valid: {{ reactiveControl.valid }} · touched: {{ reactiveControl.touched }}</small>
+    </app-example>
+
+    <app-example
+      title="Signal Forms"
+      description="required() sobre um signal com [formField]. Mesmo comportamento do exemplo anterior."
+      [html]="examples.signalHtml"
+      [ts]="examples.signalTs"
+    >
+      <kw-form-field class="field">
+        <label kw-label>Perfil</label>
+        <select kw-select [formField]="signalForm.profile">
+          <option value="" disabled>Selecione um perfil</option>
+          @for (profile of profiles; track profile) {
+            <option [value]="profile">{{ profile }}</option>
+          }
+        </select>
+        @if (signalForm.profile().touched() && signalForm.profile().invalid()) {
+          <span kw-error>Selecione um perfil.</span>
+        }
+      </kw-form-field>
+    </app-example>
+
+    <app-example
+      title="Desabilitado"
+      description="Atributo disabled: sem interação e com opacidade reduzida."
+      [html]="examples.disabledHtml"
+    >
+      <div class="field">
+        <select kw-select disabled aria-label="Perfil desabilitado">
+          <option>Administrador</option>
+        </select>
+      </div>
+    </app-example>
+
+    <app-example
+      title="Uso isolado"
+      description="Sem kw-form-field, use aria-label. Serve para listas e tabelas, onde não há rótulo visível."
+      [html]="examples.isolatedHtml"
+    >
+      <div class="row">
+        <span>Ana Souza</span>
+        <select kw-select aria-label="Perfil de Ana Souza">
+          @for (profile of profiles; track profile) {
+            <option [value]="profile">{{ profile }}</option>
+          }
+        </select>
+      </div>
+    </app-example>
+  </div>
+</div>

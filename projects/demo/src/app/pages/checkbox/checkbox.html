@@ -1,0 +1,130 @@
+<div class="page">
+  <header class="page__header">
+    <h1>Checkbox</h1>
+    <p>
+      <code>input[type="checkbox"][kw-checkbox]</code> — caixa de seleção nativa com o visual da
+      biblioteca.
+    </p>
+  </header>
+
+  <div class="page__sections">
+    <app-example
+      title="Padrão"
+      description="O rótulo fica por conta do app: um label envolvendo o checkbox. Clique no texto ou use Espaço com o foco no controle."
+      [html]="examples.defaultHtml"
+    >
+      <label class="item">
+        <input kw-checkbox type="checkbox" />
+        <span>Aceito receber novidades</span>
+      </label>
+    </app-example>
+
+    <app-example
+      title="Cores"
+      description="[color] define a cor de marcação e do visto. O padrão é primary."
+      [html]="examples.colorsHtml"
+    >
+      <div class="stack">
+        @for (color of colors; track color) {
+          <label class="item">
+            <input kw-checkbox type="checkbox" checked [color]="color" />
+            <span>{{ color }}</span>
+          </label>
+        }
+      </div>
+    </app-example>
+
+    <app-example
+      title="Estados"
+      description="Marcado, indeterminado, desabilitado e inválido. Indeterminado mostra um traço; inválido usa a cor danger."
+      [html]="examples.statesHtml"
+    >
+      <div class="stack">
+        <label class="item">
+          <input kw-checkbox type="checkbox" checked />
+          <span>Marcado</span>
+        </label>
+        <label class="item">
+          <input kw-checkbox type="checkbox" [indeterminate]="true" />
+          <span>Indeterminado</span>
+        </label>
+        <label class="item">
+          <input kw-checkbox type="checkbox" disabled />
+          <span>Desabilitado</span>
+        </label>
+        <label class="item">
+          <input kw-checkbox type="checkbox" [valid]="false" />
+          <span>Inválido</span>
+        </label>
+      </div>
+    </app-example>
+
+    <app-example
+      title="Marcar todos"
+      description="Lista com marcação geral. O checkbox do topo fica indeterminado quando só parte dos itens está marcada."
+      [html]="examples.selectAllHtml"
+      [ts]="examples.selectAllTs"
+    >
+      <div class="stack">
+        <label class="item">
+          <input
+            kw-checkbox
+            type="checkbox"
+            [checked]="allSelected()"
+            [indeterminate]="someSelected()"
+            (change)="toggleAll($any($event.target).checked)"
+          />
+          <span>Marcar todos</span>
+        </label>
+        @for (user of users; track user) {
+          <label class="item item--nested">
+            <input
+              kw-checkbox
+              type="checkbox"
+              [checked]="selection().has(user)"
+              (change)="toggleUser(user, $any($event.target).checked)"
+            />
+            <span>{{ user }}</span>
+          </label>
+        }
+      </div>
+    </app-example>
+
+    <app-example
+      title="Reactive Forms"
+      description="[formControl] sem código extra: o valor é booleano."
+      [html]="examples.reactiveHtml"
+      [ts]="examples.reactiveTs"
+    >
+      <label class="item">
+        <input kw-checkbox type="checkbox" [formControl]="reactiveControl" />
+        <span>Receber lembretes por e-mail</span>
+      </label>
+      <small>value: {{ reactiveControl.value }}</small>
+    </app-example>
+
+    <app-example
+      title="Signal Forms"
+      description="[formField] sobre um campo booleano do form()."
+      [html]="examples.signalHtml"
+      [ts]="examples.signalTs"
+    >
+      <label class="item">
+        <input kw-checkbox type="checkbox" [formField]="signalForm.notifications" />
+        <span>Receber notificações</span>
+      </label>
+      <small>value: {{ signalForm.notifications().value() }}</small>
+    </app-example>
+
+    <app-example
+      title="Uso com aria-label"
+      description="Em listas e tabelas sem rótulo visível, use aria-label."
+      [html]="examples.ariaLabelHtml"
+    >
+      <div class="stack">
+        <input kw-checkbox type="checkbox" aria-label="Selecionar Ana Souza" />
+        <input kw-checkbox type="checkbox" aria-label="Selecionar Bruno Lima" />
+      </div>
+    </app-example>
+  </div>
+</div>

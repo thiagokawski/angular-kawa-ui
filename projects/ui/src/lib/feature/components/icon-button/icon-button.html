@@ -1,0 +1,8 @@
+<span class="kw-button__content" [attr.aria-hidden]="loading() ? 'true' : null">
+  <ng-content />
+</span>
+@if (loading()) {
+  <span class="kw-button__loader">
+    <kw-spinner decorative class="kw-button__spinner" />
+  </span>
+}

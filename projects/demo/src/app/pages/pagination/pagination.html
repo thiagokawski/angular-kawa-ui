@@ -1,0 +1,57 @@
+<div class="page">
+  <header class="page__header">
+    <h1>Pagination</h1>
+    <p>
+      <code>kw-pagination</code> — paginação controlada. Use <code>[(page)]</code> para sincronizar
+      a página.
+    </p>
+  </header>
+
+  <div class="page__sections">
+    <app-example
+      title="Poucas páginas"
+      description="Com três páginas ou menos, todas aparecem sem reticências."
+      [html]="examples.few"
+      [ts]="examples.fewTs"
+    >
+      <kw-pagination [(page)]="fewPage" [total]="fewTotal" [pageSize]="10" />
+      <p class="status">Página atual: {{ fewPage() }}</p>
+    </app-example>
+
+    <app-example
+      title="Início"
+      description="Página 1 de 8, com 48 itens e 6 por página. A seta anterior fica desabilitada."
+      [html]="examples.start"
+      [ts]="examples.startTs"
+    >
+      <kw-pagination [(page)]="page" [total]="total" [pageSize]="pageSize" />
+      <p class="status">Página atual: {{ page() }}</p>
+    </app-example>
+
+    <app-example
+      title="Muitas páginas, no meio"
+      description="Página 50 de 100, com siblings igual a 1 (padrão). Reticências nos dois lados."
+      [html]="examples.many"
+      [ts]="examples.manyTs"
+    >
+      <kw-pagination [(page)]="manyPage" [total]="manyTotal" [pageSize]="10" />
+      <p class="status">Página atual: {{ manyPage() }}</p>
+    </app-example>
+
+    <app-example
+      title="kwPaginationRange"
+      description="Itens calculados pela função pura, com siblings igual a 1. Número é página; '…' é vão não clicável."
+      [html]="examples.range"
+      [ts]="examples.rangeTs"
+    >
+      <dl class="range">
+        @for (item of rangeResults(); track item.label) {
+          <dt>{{ item.label }}</dt>
+          <dd>
+            <code>{{ item.items }}</code>
+          </dd>
+        }
+      </dl>
+    </app-example>
+  </div>
+</div>

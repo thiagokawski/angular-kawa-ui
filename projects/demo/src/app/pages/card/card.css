@@ -1,0 +1,9 @@
+.demo-card {
+  width: 22rem;
+  max-width: 100%;
+}
+
+.card-app {
+  border-radius: 0;
+  border-left: 4px solid var(--kw-color-primary);
+}

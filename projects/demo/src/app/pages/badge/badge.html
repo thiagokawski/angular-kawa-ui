@@ -1,0 +1,80 @@
+<div class="page">
+  <header class="page__header">
+    <h1>Badge</h1>
+    <p>
+      <code>[kwBadge]</code> — ponto ou contador sobreposto ao canto superior direito de qualquer
+      elemento.
+    </p>
+  </header>
+
+  <div class="page__sections">
+    <app-example
+      title="Ponto"
+      description="kwBadge com true mostra um ponto no canto do elemento. Use aria-label no botão para o nome acessível."
+      [html]="examples.dot"
+    >
+      <div class="badge-demo__row">
+        <button kw-icon-button label="Notificações" [kwBadge]="true">
+          <kw-icon name="bell" />
+        </button>
+      </div>
+    </app-example>
+
+    <app-example
+      title="Contador"
+      description="Número ou texto mostra o valor. Zero, false e null não mostram nada."
+      [html]="examples.counter"
+    >
+      <div class="badge-demo__row">
+        <span class="badge-demo__target" [kwBadge]="3">Caixa</span>
+        <span class="badge-demo__target" [kwBadge]="120">Caixa</span>
+        <span class="badge-demo__target" [kwBadge]="0">Caixa</span>
+      </div>
+    </app-example>
+
+    <app-example
+      title="Limite"
+      description="kwBadgeMax define o maior valor exibido (padrão 99). Acima dele aparece o limite seguido de +."
+      [html]="examples.max"
+    >
+      <div class="badge-demo__row">
+        <span class="badge-demo__target" [kwBadge]="9" [kwBadgeMax]="9">Caixa</span>
+        <span class="badge-demo__target" [kwBadge]="10" [kwBadgeMax]="9">Caixa</span>
+      </div>
+    </app-example>
+
+    <app-example
+      title="Cores"
+      description="kwBadgeColor aceita as seis cores de intenção. O padrão é danger."
+      [html]="examples.colors"
+    >
+      <div class="badge-demo__row">
+        @for (color of colors; track color) {
+          <span class="badge-demo__target" [kwBadge]="3" [kwBadgeColor]="color">{{ color }}</span>
+        }
+      </div>
+    </app-example>
+
+    <app-example
+      title="Sobre avatar"
+      description="Com kwBadgeLabel, o texto fica disponível para leitores de tela, sem aparecer na tela."
+      [html]="examples.label"
+    >
+      <div class="badge-demo__row">
+        <kw-avatar name="Ana Souza" [kwBadge]="3" kwBadgeLabel="3 notificações não lidas" />
+      </div>
+    </app-example>
+
+    <app-example
+      title="Valor dinâmico"
+      description="O badge acompanha o sinal: adicionar aumenta o contador, e limpar o oculta."
+      [html]="examples.dynamic"
+    >
+      <div class="badge-demo__row">
+        <button kw-button (click)="add()">Adicionar</button>
+        <button kw-button variant="outline" (click)="clear()">Limpar</button>
+        <span class="badge-demo__target" [kwBadge]="count()">Caixa</span>
+      </div>
+    </app-example>
+  </div>
+</div>

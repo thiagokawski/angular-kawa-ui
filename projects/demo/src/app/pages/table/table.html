@@ -1,0 +1,157 @@
+<div class="page">
+  <header class="page__header">
+    <h1>Table</h1>
+    <p>
+      <code>table[kw-table]</code> e <code>kw-table-container</code> — estilo de tabela sobre o
+      elemento nativo.
+    </p>
+  </header>
+
+  <div class="page__sections">
+    <app-example
+      title="Simples"
+      description="Cabeçalho, filetes entre linhas e hover vêm do kw-table. O app escreve a tabela normalmente."
+      [html]="examples.simpleHtml"
+    >
+      <kw-table-container>
+        <table kw-table>
+          <thead>
+            <tr>
+              <th scope="col">Empresa</th>
+              <th scope="col">Cidade</th>
+              <th scope="col">Usuários</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (company of companies; track company.name) {
+              <tr>
+                <td>{{ company.name }}</td>
+                <td>{{ company.city }}</td>
+                <td>{{ company.users }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </kw-table-container>
+    </app-example>
+
+    <app-example
+      title="Com ações e texto secundário"
+      description='kw-cell-align="end" alinha a coluna de ações à direita. kw-cell-muted deixa o documento com texto secundário.'
+      [html]="examples.actionsHtml"
+    >
+      <kw-table-container>
+        <table kw-table>
+          <thead>
+            <tr>
+              <th scope="col">Empresa</th>
+              <th scope="col">Documento</th>
+              <th scope="col" kw-cell-align="end">Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (company of companies; track company.name) {
+              <tr>
+                <td>{{ company.name }}</td>
+                <td kw-cell-muted>{{ company.document }}</td>
+                <td kw-cell-align="end">
+                  <button kw-button type="button" variant="ghost">Editar</button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </kw-table-container>
+    </app-example>
+
+    <app-example
+      title="Com rodapé"
+      description="Conteúdo com kw-table-footer aparece separado por filete. Sem rodapé, a área some."
+      [html]="examples.footerHtml"
+    >
+      <kw-table-container>
+        <table kw-table>
+          <thead>
+            <tr>
+              <th scope="col">Empresa</th>
+              <th scope="col">Cidade</th>
+              <th scope="col">Usuários</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (company of companies; track company.name) {
+              <tr>
+                <td>{{ company.name }}</td>
+                <td>{{ company.city }}</td>
+                <td>{{ company.users }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+        <div kw-table-footer>3 empresas</div>
+      </kw-table-container>
+    </app-example>
+
+    <app-example
+      title="Densa"
+      description="Atributo dense no kw-table: células com menos espaçamento."
+      [html]="examples.denseHtml"
+    >
+      <kw-table-container>
+        <table kw-table dense>
+          <thead>
+            <tr>
+              <th scope="col">Empresa</th>
+              <th scope="col">Cidade</th>
+              <th scope="col">Usuários</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (company of companies; track company.name) {
+              <tr>
+                <td>{{ company.name }}</td>
+                <td>{{ company.city }}</td>
+                <td>{{ company.users }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </kw-table-container>
+    </app-example>
+
+    <app-example
+      title="Rolagem horizontal"
+      description="Em tela estreita, a tabela rola dentro do kw-table-container. A página não rola na horizontal."
+      [html]="examples.scrollHtml"
+    >
+      <div class="narrow">
+        <kw-table-container>
+          <table kw-table>
+            <thead>
+              <tr>
+                <th scope="col">Empresa</th>
+                <th scope="col">Documento</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">Usuários</th>
+                <th scope="col" kw-cell-align="end">Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (company of companies; track company.name) {
+                <tr>
+                  <td>{{ company.name }}</td>
+                  <td kw-cell-muted>{{ company.document }}</td>
+                  <td>{{ company.city }}</td>
+                  <td>{{ company.users }}</td>
+                  <td kw-cell-align="end">
+                    <button kw-button type="button" variant="ghost">Editar</button>
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </kw-table-container>
+      </div>
+    </app-example>
+  </div>
+</div>

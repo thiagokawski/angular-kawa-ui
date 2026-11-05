@@ -10,6 +10,11 @@ export const BUTTON_EXAMPLES = {
 <button kw-button variant="outline">Outline</button>
 <button kw-button variant="ghost">Ghost</button>`,
 
+  fill: `<div style="display: contents; --kw-color-primary-fill: linear-gradient(90deg, #7c3aed, #db2777)">
+  <button kw-button>Degradê</button>
+</div>
+<button kw-button>Primary padrão</button>`,
+
   matrix: `<div class="matrix">
   @for (variant of variants; track variant) {
     <div class="matrix__row">

@@ -29,6 +29,19 @@
     </app-example>
 
     <app-example
+      title="Preenchimento customizado"
+      description="--kw-color-primary-fill aceita degradê. Aqui ele é definido só no escopo do exemplo; o botão ao lado segue a cor padrão."
+      [html]="examples.fill"
+    >
+      <div
+        style="display: contents; --kw-color-primary-fill: linear-gradient(90deg, #7c3aed, #db2777)"
+      >
+        <button kw-button>Degradê</button>
+      </div>
+      <button kw-button>Primary padrão</button>
+    </app-example>
+
+    <app-example
       title="Matriz cor × variant"
       description="As 18 combinações, uma linha por variant. As listas colors e variants ficam no componente."
       [html]="examples.matrix"

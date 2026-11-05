@@ -1,0 +1,25 @@
+.status {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--kw-color-text-muted);
+}
+
+.range {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: calc(var(--kw-spacing) * 2) calc(var(--kw-spacing) * 4);
+  margin: 0;
+}
+
+.range dt {
+  font-size: 0.875rem;
+  color: var(--kw-color-text-muted);
+}
+
+.range dd {
+  margin: 0;
+}
+
+.range code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}

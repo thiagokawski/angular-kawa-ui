@@ -1,0 +1,5 @@
+.stack {
+  display: grid;
+  gap: calc(var(--kw-spacing) * 3);
+  width: 100%;
+}

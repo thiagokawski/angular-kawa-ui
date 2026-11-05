@@ -1,0 +1,13 @@
+<div
+  #panel
+  class="kw-menu__panel"
+  popover="auto"
+  role="menu"
+  [id]="panelId"
+  [attr.aria-label]="label()"
+>
+  <div class="kw-menu__header" role="presentation">
+    <ng-content select="[kw-menu-header]" />
+  </div>
+  <ng-content />
+</div>

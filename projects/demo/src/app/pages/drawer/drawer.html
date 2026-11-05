@@ -1,0 +1,47 @@
+<div class="page">
+  <header class="page__header">
+    <h1>Drawer</h1>
+    <p>
+      <code>kw-drawer</code>, painel lateral modal sobre <code>dialog</code>. Esc e clique no
+      backdrop fecham.
+    </p>
+  </header>
+
+  <div class="page__sections">
+    <app-example
+      title="À esquerda"
+      description="position padrão (start). Ao fechar, o foco volta ao botão que abriu."
+      [html]="examples.start"
+      [ts]="examples.ts"
+    >
+      <button kw-button variant="outline" (click)="startOpen.set(true)">Abrir à esquerda</button>
+
+      <kw-drawer label="Navegação" [(open)]="startOpen">
+        <nav class="drawer-demo">
+          <a href="#" class="drawer-demo__link" (click)="$event.preventDefault()">Início</a>
+          <a href="#" class="drawer-demo__link" (click)="$event.preventDefault()">Empresas</a>
+          <a href="#" class="drawer-demo__link" (click)="$event.preventDefault()">Relatórios</a>
+          <button kw-button variant="outline" (click)="startOpen.set(false)">Fechar</button>
+        </nav>
+      </kw-drawer>
+    </app-example>
+
+    <app-example
+      title="À direita"
+      description="position='end'. Mesmo comportamento, com a borda do lado interno."
+      [html]="examples.end"
+      [ts]="examples.ts"
+    >
+      <button kw-button variant="outline" (click)="endOpen.set(true)">Abrir à direita</button>
+
+      <kw-drawer label="Filtros" position="end" [(open)]="endOpen">
+        <nav class="drawer-demo">
+          <a href="#" class="drawer-demo__link" (click)="$event.preventDefault()">Todos</a>
+          <a href="#" class="drawer-demo__link" (click)="$event.preventDefault()">Ativos</a>
+          <a href="#" class="drawer-demo__link" (click)="$event.preventDefault()">Arquivados</a>
+          <button kw-button variant="outline" (click)="endOpen.set(false)">Fechar</button>
+        </nav>
+      </kw-drawer>
+    </app-example>
+  </div>
+</div>

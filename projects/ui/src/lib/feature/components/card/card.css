@@ -1,0 +1,12 @@
+@reference "../../../core/theme/tailwind.css";
+
+/* Tokens opcionais: --kw-card-radius, --kw-card-padding e --kw-card-shadow. Sem eles, o padrão é o do tema. */
+:where(.kw-card) {
+  display: block;
+  background: var(--kw-color-surface);
+  color: var(--kw-color-text);
+  border: 1px solid var(--kw-color-border);
+  border-radius: var(--kw-card-radius, var(--kw-radius-lg, calc(var(--kw-radius-md) * 1.5)));
+  padding: var(--kw-card-padding, calc(var(--kw-spacing) * 6));
+  box-shadow: var(--kw-card-shadow, none);
+}

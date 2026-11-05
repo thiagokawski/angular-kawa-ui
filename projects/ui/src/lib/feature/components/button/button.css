@@ -7,7 +7,7 @@
   line-height: 1.25rem;
   font-weight: 500;
   transition:
-    background-color 150ms ease,
+    background 150ms ease,
     border-color 150ms ease,
     color 150ms ease;
 }
@@ -35,16 +35,20 @@
 }
 
 :where(.kw-button--primary:focus-visible) {
-  outline: 2px solid var(--kw-color-primary);
+  outline: 2px solid var(--kw-color-focus, var(--kw-color-primary));
   outline-offset: 2px;
 }
 
 :where(.kw-button--primary.kw-button--solid) {
-  @apply bg-primary text-on-primary;
+  background: var(--kw-color-primary-fill, var(--kw-color-primary));
+  @apply text-on-primary;
 }
 
 :where(.kw-button--primary.kw-button--solid:hover:not(:disabled, [aria-disabled='true'])) {
-  @apply bg-primary-hover;
+  background: var(
+    --kw-color-primary-fill-hover,
+    var(--kw-color-primary-hover, color-mix(in oklab, var(--kw-color-primary), black 12%))
+  );
 }
 
 :where(.kw-button--primary.kw-button--outline) {
@@ -64,14 +68,18 @@
 }
 
 :where(.kw-button--secondary:focus-visible) {
-  outline: 2px solid var(--kw-color-secondary);
+  outline: 2px solid var(--kw-color-focus, var(--kw-color-secondary));
   outline-offset: 2px;
 }
 :where(.kw-button--secondary.kw-button--solid) {
-  @apply bg-secondary text-on-secondary;
+  background: var(--kw-color-secondary-fill, var(--kw-color-secondary));
+  @apply text-on-secondary;
 }
 :where(.kw-button--secondary.kw-button--solid:hover:not(:disabled, [aria-disabled='true'])) {
-  @apply bg-secondary-hover;
+  background: var(
+    --kw-color-secondary-fill-hover,
+    var(--kw-color-secondary-hover, color-mix(in oklab, var(--kw-color-secondary), black 12%))
+  );
 }
 :where(.kw-button--secondary.kw-button--outline) {
   @apply border-secondary text-secondary;
@@ -87,14 +95,18 @@
 }
 
 :where(.kw-button--success:focus-visible) {
-  outline: 2px solid var(--kw-color-success);
+  outline: 2px solid var(--kw-color-focus, var(--kw-color-success));
   outline-offset: 2px;
 }
 :where(.kw-button--success.kw-button--solid) {
-  @apply bg-success text-on-success;
+  background: var(--kw-color-success-fill, var(--kw-color-success));
+  @apply text-on-success;
 }
 :where(.kw-button--success.kw-button--solid:hover:not(:disabled, [aria-disabled='true'])) {
-  @apply bg-success-hover;
+  background: var(
+    --kw-color-success-fill-hover,
+    var(--kw-color-success-hover, color-mix(in oklab, var(--kw-color-success), black 12%))
+  );
 }
 :where(.kw-button--success.kw-button--outline) {
   @apply border-success text-success;
@@ -110,14 +122,18 @@
 }
 
 :where(.kw-button--warning:focus-visible) {
-  outline: 2px solid var(--kw-color-warning);
+  outline: 2px solid var(--kw-color-focus, var(--kw-color-warning));
   outline-offset: 2px;
 }
 :where(.kw-button--warning.kw-button--solid) {
-  @apply bg-warning text-on-warning;
+  background: var(--kw-color-warning-fill, var(--kw-color-warning));
+  @apply text-on-warning;
 }
 :where(.kw-button--warning.kw-button--solid:hover:not(:disabled, [aria-disabled='true'])) {
-  @apply bg-warning-hover;
+  background: var(
+    --kw-color-warning-fill-hover,
+    var(--kw-color-warning-hover, color-mix(in oklab, var(--kw-color-warning), black 12%))
+  );
 }
 :where(.kw-button--warning.kw-button--outline) {
   @apply border-warning text-warning;
@@ -133,14 +149,18 @@
 }
 
 :where(.kw-button--danger:focus-visible) {
-  outline: 2px solid var(--kw-color-danger);
+  outline: 2px solid var(--kw-color-focus, var(--kw-color-danger));
   outline-offset: 2px;
 }
 :where(.kw-button--danger.kw-button--solid) {
-  @apply bg-danger text-on-danger;
+  background: var(--kw-color-danger-fill, var(--kw-color-danger));
+  @apply text-on-danger;
 }
 :where(.kw-button--danger.kw-button--solid:hover:not(:disabled, [aria-disabled='true'])) {
-  @apply bg-danger-hover;
+  background: var(
+    --kw-color-danger-fill-hover,
+    var(--kw-color-danger-hover, color-mix(in oklab, var(--kw-color-danger), black 12%))
+  );
 }
 :where(.kw-button--danger.kw-button--outline) {
   @apply border-danger text-danger;
@@ -156,14 +176,18 @@
 }
 
 :where(.kw-button--info:focus-visible) {
-  outline: 2px solid var(--kw-color-info);
+  outline: 2px solid var(--kw-color-focus, var(--kw-color-info));
   outline-offset: 2px;
 }
 :where(.kw-button--info.kw-button--solid) {
-  @apply bg-info text-on-info;
+  background: var(--kw-color-info-fill, var(--kw-color-info));
+  @apply text-on-info;
 }
 :where(.kw-button--info.kw-button--solid:hover:not(:disabled, [aria-disabled='true'])) {
-  @apply bg-info-hover;
+  background: var(
+    --kw-color-info-fill-hover,
+    var(--kw-color-info-hover, color-mix(in oklab, var(--kw-color-info), black 12%))
+  );
 }
 :where(.kw-button--info.kw-button--outline) {
   @apply border-info text-info;

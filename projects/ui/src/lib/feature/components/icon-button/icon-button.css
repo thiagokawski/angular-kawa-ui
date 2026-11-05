@@ -1,0 +1,41 @@
+/*
+ * Só tamanho. Cores, variantes, foco, desabilitado, arredondado e loading vêm das classes do KwButton.
+ * O ícone (svg projetado) é dimensionado aqui, então o app não passa width/height.
+ */
+:where(.kw-icon-button) {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  padding: 0;
+  gap: 0;
+  --kw-icon-size: 1.25rem;
+}
+
+:where(.kw-icon-button--sm) {
+  width: 2rem;
+  min-width: 2rem;
+  height: 2rem;
+  min-height: 2rem;
+  --kw-icon-size: 1rem;
+}
+
+:where(.kw-icon-button--md) {
+  width: 2.5rem;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  min-height: 2.5rem;
+  --kw-icon-size: 1.25rem;
+}
+
+:where(.kw-icon-button--lg) {
+  width: 3rem;
+  min-width: 3rem;
+  height: 3rem;
+  min-height: 3rem;
+  --kw-icon-size: 1.5rem;
+}
+
+:where(.kw-icon-button) :where(.kw-button__content) > svg {
+  width: var(--kw-icon-size);
+  height: var(--kw-icon-size);
+  flex-shrink: 0;
+}

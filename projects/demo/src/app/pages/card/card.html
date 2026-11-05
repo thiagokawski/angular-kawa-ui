@@ -1,0 +1,59 @@
+<div class="page">
+  <header class="page__header">
+    <h1>Card</h1>
+    <p><code>kw-card</code>, <code>[kw-card]</code> — superfície para agrupar conteúdo.</p>
+  </header>
+
+  <div class="page__sections">
+    <app-example
+      title="Básico"
+      description="kw-card com título e texto. Superfície, borda e raio vêm do tema."
+      [html]="examples.basic"
+    >
+      <kw-card class="demo-card">
+        <h2>Entrar</h2>
+        <p>Use seu e-mail e senha para continuar.</p>
+      </kw-card>
+    </app-example>
+
+    <app-example
+      title="Como section"
+      description="O atributo kw-card funciona em section e article."
+      [html]="examples.asSection"
+    >
+      <section kw-card class="demo-card">
+        <h2>Recuperar senha</h2>
+        <p>Enviaremos um código para o seu e-mail.</p>
+      </section>
+    </app-example>
+
+    <app-example
+      title="Tokens sobrescritos"
+      description="--kw-card-radius, --kw-card-padding e --kw-card-shadow mudam o visual do card."
+      [html]="examples.tokens"
+    >
+      <kw-card
+        class="demo-card"
+        style="
+          --kw-card-radius: 1.5rem;
+          --kw-card-padding: 2rem;
+          --kw-card-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+        "
+      >
+        <h2>Tokens sobrescritos</h2>
+        <p>Raio, padding e sombra vêm dos tokens --kw-card-*.</p>
+      </kw-card>
+    </app-example>
+
+    <app-example
+      title="Classe do app"
+      description="A classe .card-app (border-radius: 0 e borda à esquerda, no card.css da demo) vence o padrão da lib sem !important, porque os estilos da lib usam :where()."
+      [html]="examples.appClass"
+    >
+      <kw-card class="demo-card card-app">
+        <h2>Classe do app</h2>
+        <p>Sem !important, a classe do app vence o padrão da lib.</p>
+      </kw-card>
+    </app-example>
+  </div>
+</div>

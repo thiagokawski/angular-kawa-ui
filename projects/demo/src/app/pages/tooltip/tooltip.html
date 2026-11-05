@@ -1,0 +1,50 @@
+<div class="page">
+  <header class="page__header">
+    <h1>Tooltip</h1>
+    <p>
+      <code>[kwTooltip]</code> — rótulo curto ao lado do elemento, em hover e foco. Esc esconde.
+    </p>
+  </header>
+
+  <div class="page__sections">
+    <app-example
+      title="Posições"
+      description="kwTooltipPosition: top (padrão), right, bottom e left. O hover mostra depois de 300 ms; o foco por teclado mostra na hora."
+      [html]="examples.positions"
+    >
+      <div class="tooltip-demo__row">
+        @for (position of positions; track position) {
+          <button kw-button variant="outline" [kwTooltip]="position" [kwTooltipPosition]="position">
+            {{ position }}
+          </button>
+        }
+      </div>
+    </app-example>
+
+    <app-example
+      title="Atraso"
+      description="kwTooltipDelay define o atraso, em milissegundos, para o hover."
+      [html]="examples.delay"
+    >
+      <button kw-button [kwTooltip]="'Aparece na hora'" [kwTooltipDelay]="0">Sem atraso</button>
+    </app-example>
+
+    <app-example
+      title="Desabilitado"
+      description="kwTooltipDisabled impede a exibição, mesmo com hover e foco."
+      [html]="examples.disabled"
+    >
+      <button kw-button [kwTooltip]="'Não aparece'" kwTooltipDisabled>Desabilitado</button>
+    </app-example>
+
+    <app-example
+      title="Perto da borda"
+      description="O tooltip se mantém dentro da viewport, mesmo quando o elemento está na borda."
+      [html]="examples.edge"
+    >
+      <div class="tooltip-demo__edge">
+        <button kw-button kwTooltip="Perto da borda" kwTooltipPosition="left">Borda</button>
+      </div>
+    </app-example>
+  </div>
+</div>

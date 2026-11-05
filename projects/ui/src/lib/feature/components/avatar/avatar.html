@@ -1,0 +1,7 @@
+@if (showImage()) {
+  <img class="kw-avatar__image" [src]="src()" [alt]="name()" (error)="onImageError()" />
+} @else {
+  <span class="kw-avatar__initials" role="img" [attr.aria-label]="name()">{{
+    resolvedInitials()
+  }}</span>
+}

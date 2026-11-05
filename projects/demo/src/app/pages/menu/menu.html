@@ -1,0 +1,53 @@
+<div class="page">
+  <header class="page__header">
+    <h1>Menu</h1>
+    <p>
+      <code>kw-menu</code>, <code>button[kwMenuTriggerFor]</code> e <code>[kw-menu-item]</code>.
+      Menu suspenso sobre a Popover API.
+    </p>
+  </header>
+
+  <div class="page__sections">
+    <app-example
+      title="Menu de usuário"
+      description="Cabeçalho com nome e e-mail, itens e uma ação danger no fim. Clique fora, Esc ou escolher um item fecha o menu."
+      [html]="examples.user"
+      [ts]="examples.ts"
+    >
+      <kw-menu #userMenu label="Menu da conta">
+        <div kw-menu-header>
+          <strong>Ana Lima</strong>
+          <span>ana@exemplo.com.br</span>
+        </div>
+        <button kw-menu-item (click)="select('Perfil')">Perfil</button>
+        <button kw-menu-item (click)="select('Configurações')">Configurações</button>
+        <button kw-menu-item color="danger" (click)="select('Sair')">Sair</button>
+      </kw-menu>
+      <button kw-button variant="outline" [kwMenuTriggerFor]="userMenu">Conta</button>
+    </app-example>
+
+    <app-example
+      title="Alinhado ao início"
+      description="kwMenuPosition='bottom-start' alinha o menu pela borda inicial do gatilho."
+      [html]="examples.start"
+    >
+      <kw-menu #actionsMenu label="Ações">
+        <button kw-menu-item (click)="select('Editar')">Editar</button>
+        <button kw-menu-item (click)="select('Duplicar')">Duplicar</button>
+        <button kw-menu-item color="danger" (click)="select('Arquivar')">Arquivar</button>
+      </kw-menu>
+      <button
+        kw-button
+        variant="outline"
+        kwMenuPosition="bottom-start"
+        [kwMenuTriggerFor]="actionsMenu"
+      >
+        Ações
+      </button>
+    </app-example>
+
+    @if (lastAction(); as action) {
+      <p class="menu-demo__status">Última ação: {{ action }}</p>
+    }
+  </div>
+</div>

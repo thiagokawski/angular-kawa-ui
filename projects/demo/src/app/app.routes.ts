@@ -32,6 +32,59 @@ export const routes: Routes = [
         path: 'form-field',
         loadComponent: () => import('./pages/form-field/form-field').then((m) => m.FormFieldPage),
       },
+      {
+        path: 'card',
+        loadComponent: () => import('./pages/card/card').then((m) => m.CardPage),
+      },
+      {
+        path: 'alert',
+        loadComponent: () => import('./pages/alert/alert').then((m) => m.AlertPage),
+      },
+      {
+        path: 'avatar',
+        loadComponent: () => import('./pages/avatar/avatar').then((m) => m.AvatarPage),
+      },
+      {
+        path: 'icon-button',
+        loadComponent: () =>
+          import('./pages/icon-button/icon-button').then((m) => m.IconButtonPage),
+      },
+      {
+        path: 'pagination',
+        loadComponent: () => import('./pages/pagination/pagination').then((m) => m.PaginationPage),
+      },
+      {
+        path: 'select',
+        loadComponent: () => import('./pages/select/select').then((m) => m.SelectPage),
+      },
+      {
+        path: 'checkbox',
+        loadComponent: () => import('./pages/checkbox/checkbox').then((m) => m.CheckboxPage),
+      },
+      {
+        path: 'table',
+        loadComponent: () => import('./pages/table/table').then((m) => m.TablePage),
+      },
+      {
+        path: 'icon',
+        loadComponent: () => import('./pages/icon/icon').then((m) => m.IconPage),
+      },
+      {
+        path: 'badge',
+        loadComponent: () => import('./pages/badge/badge').then((m) => m.BadgePage),
+      },
+      {
+        path: 'tooltip',
+        loadComponent: () => import('./pages/tooltip/tooltip').then((m) => m.TooltipPage),
+      },
+      {
+        path: 'drawer',
+        loadComponent: () => import('./pages/drawer/drawer').then((m) => m.DrawerPage),
+      },
+      {
+        path: 'menu',
+        loadComponent: () => import('./pages/menu/menu').then((m) => m.MenuPage),
+      },
     ],
   },
   { path: '**', redirectTo: '' },

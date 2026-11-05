@@ -1,0 +1,19 @@
+.icon-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: calc(var(--kw-spacing) * 4);
+}
+
+.icon-gallery__item {
+  display: grid;
+  justify-items: center;
+  gap: var(--kw-spacing);
+  width: 5rem;
+  font-size: 0.75rem;
+  color: var(--kw-color-text-muted);
+}
+
+.icon-demo__success {
+  display: inline-flex;
+  color: var(--kw-color-success);
+}

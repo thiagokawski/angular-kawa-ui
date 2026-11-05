@@ -1,0 +1,22 @@
+import { Component } from '@angular/core';
+import { KwAvatar, KwAvatarSize } from '@kawa-ng/ui';
+
+import { Example } from '../../shared/components/example/example';
+import { AVATAR_EXAMPLES } from './avatar.examples';
+
+/** Imagem de exemplo embutida, para a demo funcionar sem rede. */
+const PHOTO_SRC =
+  'data:image/png;base64,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';
+
+@Component({
+  selector: 'app-avatar-page',
+  templateUrl: './avatar.html',
+  imports: [KwAvatar, Example],
+  styleUrls: ['../../shared/styles/page.css', './avatar.css'],
+})
+export class AvatarPage {
+  protected readonly examples = AVATAR_EXAMPLES;
+  protected readonly sizes: KwAvatarSize[] = ['sm', 'md', 'lg'];
+  protected readonly photo = PHOTO_SRC;
+  protected readonly brokenPhoto = '/imagem-inexistente.png';
+}

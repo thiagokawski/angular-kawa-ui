@@ -1,0 +1,46 @@
+/* Tokens opcionais: --kw-avatar-background, --kw-avatar-color, --kw-avatar-border e --kw-avatar-font. */
+:where(.kw-avatar) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  vertical-align: middle;
+  border-radius: 9999px;
+  background: var(--kw-avatar-background, var(--kw-color-secondary));
+  color: var(--kw-avatar-color, var(--kw-color-on-secondary));
+  border: var(--kw-avatar-border, none);
+  font-family: var(--kw-avatar-font, var(--kw-font-sans));
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  user-select: none;
+}
+
+:where(.kw-avatar--sm) {
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+:where(.kw-avatar--md) {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+:where(.kw-avatar--lg) {
+  width: 3rem;
+  height: 3rem;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+:where(.kw-avatar__image) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

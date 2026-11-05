@@ -1,0 +1,105 @@
+/*
+ * Tokens opcionais: --kw-checkbox-border (borda sem marcação, padrão text-muted para contraste de
+ * controle) e --kw-checkbox-radius. Sem eles, o padrão vem do tema.
+ */
+:where(.kw-checkbox) {
+  appearance: none;
+  box-sizing: border-box;
+  display: inline-grid;
+  place-content: center;
+  flex-shrink: 0;
+  width: calc(var(--kw-spacing) * 5);
+  height: calc(var(--kw-spacing) * 5);
+  margin: 0;
+  border: 1px solid var(--kw-checkbox-border, var(--kw-color-text-muted));
+  border-radius: var(--kw-checkbox-radius, var(--kw-radius-sm, calc(var(--kw-radius-md) * 0.5)));
+  background: var(--kw-color-surface);
+  cursor: pointer;
+  transition:
+    background 150ms ease,
+    border-color 150ms ease;
+}
+
+/* Cor de intenção: define a cor de marcação e a cor do visto. */
+:where(.kw-checkbox--primary) {
+  --kw-checkbox-accent: var(--kw-color-primary);
+  --kw-checkbox-on: var(--kw-color-on-primary);
+}
+
+:where(.kw-checkbox--secondary) {
+  --kw-checkbox-accent: var(--kw-color-secondary);
+  --kw-checkbox-on: var(--kw-color-on-secondary);
+}
+
+:where(.kw-checkbox--success) {
+  --kw-checkbox-accent: var(--kw-color-success);
+  --kw-checkbox-on: var(--kw-color-on-success);
+}
+
+:where(.kw-checkbox--warning) {
+  --kw-checkbox-accent: var(--kw-color-warning);
+  --kw-checkbox-on: var(--kw-color-on-warning);
+}
+
+:where(.kw-checkbox--danger) {
+  --kw-checkbox-accent: var(--kw-color-danger);
+  --kw-checkbox-on: var(--kw-color-on-danger);
+}
+
+:where(.kw-checkbox--info) {
+  --kw-checkbox-accent: var(--kw-color-info);
+  --kw-checkbox-on: var(--kw-color-on-info);
+}
+
+/* Visto desenhado com pseudo-elemento: um L girado. */
+:where(.kw-checkbox)::before {
+  content: '';
+  box-sizing: border-box;
+  width: 0.3125rem;
+  height: 0.625rem;
+  border-style: solid;
+  border-color: var(--kw-checkbox-on, var(--kw-color-on-primary));
+  border-width: 0 2px 2px 0;
+  transform: translateY(-0.0625rem) rotate(45deg) scale(0);
+  transition: transform 100ms ease;
+}
+
+:where(.kw-checkbox:hover:not(:disabled)) {
+  border-color: var(--kw-checkbox-accent, var(--kw-color-primary));
+}
+
+:where(.kw-checkbox:checked),
+:where(.kw-checkbox:indeterminate) {
+  background: var(--kw-checkbox-accent, var(--kw-color-primary));
+  border-color: var(--kw-checkbox-accent, var(--kw-color-primary));
+}
+
+:where(.kw-checkbox:checked)::before {
+  transform: translateY(-0.0625rem) rotate(45deg) scale(1);
+}
+
+/* Traço do estado misto. Vem depois do visto para vencê-lo quando as duas flags estiverem ativas. */
+:where(.kw-checkbox:indeterminate)::before {
+  width: calc(var(--kw-spacing) * 2);
+  height: 0;
+  border-width: 2px 0 0;
+  transform: none;
+}
+
+:where(.kw-checkbox:focus-visible) {
+  outline: 2px solid var(--kw-color-focus, var(--kw-color-primary));
+  outline-offset: 2px;
+}
+
+:where(.kw-checkbox:disabled) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+:where(.kw-checkbox--invalid) {
+  border-color: var(--kw-color-danger);
+}
+
+:where(.kw-checkbox--invalid:focus-visible) {
+  outline-color: var(--kw-color-danger);
+}
