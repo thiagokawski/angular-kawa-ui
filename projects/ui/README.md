@@ -86,6 +86,12 @@ Um dark próprio pode usar outro mecanismo, por exemplo a preferência do sistem
 | `--kw-pagination-active-background` | Não | `--kw-color-primary-soft` | Fundo da página atual do `KwPagination` |
 | `--kw-checkbox-border` | Não | `--kw-color-text-muted` | Borda do `KwCheckbox` sem marcação |
 | `--kw-checkbox-radius` | Não | `--kw-radius-sm` | Raio do `KwCheckbox` |
+| `--kw-radio-border` | Não | `--kw-color-text-muted` | Borda do `KwRadio` sem marcação |
+| `--kw-choice-border` | Não | `--kw-color-border` | Borda do `KwChoice` sem seleção |
+| `--kw-choice-radius` | Não | `--kw-radius-sm` | Raio do `KwChoice` |
+| `--kw-choice-padding` | Não | `calc(--kw-spacing × 4)` | Padding interno do `KwChoice` |
+| `--kw-status-dot-size` | Não | `calc(--kw-spacing × 2)` | Diâmetro do ponto do `KwStatus` |
+| `--kw-status-gap` | Não | `calc(--kw-spacing × 2)` | Espaço entre o ponto e o rótulo do `KwStatus` |
 | `--kw-table-header-background` | Não | `color-mix(in oklab, text 4%, surface)` | Fundo do cabeçalho do `KwTable` |
 | `--kw-icon-stroke-width` | Não | `2` | Espessura do traço do `KwIcon` |
 | `--kw-badge-ring` | Não | `--kw-color-background` | Anel de 2px ao redor do `KwBadge` |
@@ -223,6 +229,64 @@ Checkbox nativo estilizado. O elemento continua sendo `input[type="checkbox"]`: 
 
 Entradas: `color` (`primary` por padrão), `valid` (`false` mostra o estado inválido), `indeterminate` (traço de estado misto; o navegador limpa ao clicar, então o app atualiza a entrada depois do `change`).
 
+### KwTextarea
+
+Campo de várias linhas com o visual do `KwInput`. Use `textarea[kw-textarea]`. Altura mínima de três linhas e redimensionamento só na vertical; o atributo `rows` do app continua valendo.
+
+```html
+<kw-form-field>
+  <label kw-label>Descrição</label>
+  <textarea kw-textarea formControlName="descricao" rows="5"></textarea>
+  <span kw-hint align="start">Resumo do projeto</span>
+  <span kw-hint align="end">58/280</span>
+</kw-form-field>
+```
+
+- Integra com `kw-form-field` (rótulo, dica e erro), com `[formControl]`, `formControlName` e `[formField]` (Signal Forms), como o `KwInput`.
+- `[kw-hint]` aceita `align`: `start` (padrão) ou `end`. Dois hints no mesmo campo ficam na mesma linha, o de `start` à esquerda e o de `end` à direita; os dois ids entram em `aria-describedby`.
+- Entradas: `valid` (`false` força o erro, `true` força o estado válido), `id`.
+
+### KwRadio
+
+Radio nativo estilizado. O elemento continua sendo `input[type="radio"]`: `checked`, `disabled`, `formControlName` e `[formField]` funcionam sem adaptador. Os radios de um grupo compartilham o `name` (ou o mesmo controle do form), e a navegação por setas é nativa. O rótulo fica por conta do app.
+
+```html
+<div role="radiogroup" aria-labelledby="tipo-titulo">
+  <label>
+    <input kw-radio type="radio" name="tipo" value="publico" />
+    <span>Público</span>
+  </label>
+  <label>
+    <input kw-radio type="radio" name="tipo" value="privado" />
+    <span>Privado</span>
+  </label>
+</div>
+```
+
+Entradas: `color` (`primary` por padrão), `valid` (`false` mostra o estado inválido).
+
+### KwChoice
+
+Opção em cartão: `label[kw-choice]` envolve um `kw-radio` (ou `kw-checkbox`) e o texto. Quando o controle interno está marcado, o cartão ganha a borda e o fundo suave da cor de intenção. O foco do teclado aparece em volta do cartão, e o controle interno não mostra o próprio anel.
+
+```html
+<div role="radiogroup" aria-labelledby="plano-titulo">
+  <label kw-choice>
+    <input kw-radio type="radio" name="plano" value="mensal" formControlName="plano" />
+    <span>Mensal</span>
+  </label>
+  <label kw-choice color="success">
+    <input kw-radio type="radio" name="plano" value="anual" formControlName="plano" />
+    <span>Anual</span>
+  </label>
+</div>
+```
+
+- `color`: `primary` (padrão), `secondary`, `success`, `warning`, `danger` ou `info`. Vale para o destaque do cartão marcado.
+- Desabilitado (controle com `disabled`) fica com opacidade reduzida e cursor de bloqueio.
+- Tokens: `--kw-choice-border`, `--kw-choice-radius` e `--kw-choice-padding`, na tabela acima. Em cada intenção, o fundo marcado usa `--kw-color-X-soft`.
+- O grupo é responsabilidade do app: `role="radiogroup"` com `aria-labelledby`.
+
 ### KwTable
 
 Estilo de tabela sobre o `<table>` nativo, sem lógica de dados: o app escreve `thead`, `tbody`, `tr`, `th scope="col"` e `td`.
@@ -328,6 +392,18 @@ Ponto ou contador sobreposto ao canto superior direito de qualquer elemento.
 - `kwBadgeColor`: cor de intenção (padrão `danger`). `kwBadgeMax`: maior valor exibido (padrão `99`, depois `99+`).
 - `kwBadgeLabel`: texto só para leitor de tela.
 - A diretiva põe `position: relative` no host. Elementos com `overflow: hidden` cortam o badge.
+
+### KwStatus
+
+Indicador de status: um ponto seguido do rótulo, na mesma cor. Use `kw-status` com o texto projetado. O ponto é decorativo, então o leitor de tela anuncia só o rótulo.
+
+```html
+<kw-status color="success">Em andamento</kw-status>
+<kw-status color="muted">Pausado</kw-status>
+```
+
+- `color`: `neutral` (padrão, texto do tema), `muted` (texto secundário), ou uma cor de intenção (`primary`, `secondary`, `success`, `warning`, `danger`, `info`). O ponto e o rótulo usam a mesma cor.
+- Tokens: `--kw-status-dot-size` e `--kw-status-gap`, na tabela acima.
 
 ### KwTooltip
 

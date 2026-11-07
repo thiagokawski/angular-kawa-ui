@@ -17,6 +17,20 @@
   @apply text-xs text-text-muted;
 }
 
+/* Linha das dicas: `start` à esquerda, `end` à direita. Sem dica, a linha não ocupa espaço. */
+:where(.kw-form-field__hints) {
+  @apply flex items-start justify-between gap-2;
+}
+
+:where(.kw-form-field__hints:not(:has(> *))) {
+  display: none;
+}
+
+:where(.kw-hint--end) {
+  margin-inline-start: auto;
+  text-align: end;
+}
+
 :where(.kw-error) {
   @apply text-xs text-danger;
 }
@@ -26,6 +40,10 @@
 }
 
 :where(.kw-form-field--invalid) :where(.kw-hint) {
+  display: none;
+}
+
+:where(.kw-form-field--invalid) :where(.kw-form-field__hints) {
   display: none;
 }
 

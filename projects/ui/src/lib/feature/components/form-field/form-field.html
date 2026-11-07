@@ -1,6 +1,8 @@
 <ng-content select="[kw-label]" />
 <ng-content />
-<ng-content select="[kw-hint]" />
+<div class="kw-form-field__hints">
+  <ng-content select="[kw-hint]" />
+</div>
 <ng-content select="[kw-error]" />
 @if (autoError(); as message) {
   <span class="kw-error" [id]="autoErrorId">{{ message }}</span>

@@ -1,0 +1,40 @@
+@reference "../../../core/theme/tailwind.css";
+
+/*
+ * Mesmo visual do KwInput. Altura mínima de três linhas (1.25rem de linha, padding de 0.5rem em
+ * cima e embaixo e borda de 1px em cada lado), redimensionável só na vertical.
+ */
+:where(.kw-textarea) {
+  @apply w-full px-3 py-2 rounded-md font-sans bg-surface text-text;
+  box-sizing: border-box;
+  display: block;
+  min-height: calc(1.25rem * 3 + 1rem + 2px);
+  border: 1px solid var(--kw-color-border);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  resize: vertical;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+:where(.kw-textarea)::placeholder {
+  @apply text-text-muted;
+}
+
+:where(.kw-textarea:focus-visible) {
+  outline: 2px solid var(--kw-color-focus, var(--kw-color-primary));
+  outline-offset: 2px;
+}
+
+:where(.kw-textarea:disabled) {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+:where(.kw-textarea--invalid) {
+  @apply border-danger;
+}
+
+:where(.kw-textarea--invalid:focus-visible) {
+  outline-color: var(--kw-color-danger);
+}

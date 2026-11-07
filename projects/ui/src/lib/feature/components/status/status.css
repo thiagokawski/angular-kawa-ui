@@ -1,0 +1,51 @@
+/*
+ * Tokens opcionais: --kw-status-dot-size (padrão 8px) e --kw-status-gap (padrão 8px). Sem eles, o
+ * padrão vem do --kw-spacing.
+ */
+:where(.kw-status) {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--kw-status-gap, calc(var(--kw-spacing) * 2));
+  font-size: inherit;
+  line-height: inherit;
+}
+
+:where(.kw-status__dot) {
+  flex-shrink: 0;
+  width: var(--kw-status-dot-size, calc(var(--kw-spacing) * 2));
+  height: var(--kw-status-dot-size, calc(var(--kw-spacing) * 2));
+  border-radius: 9999px;
+  background: currentColor;
+}
+
+:where(.kw-status--neutral) {
+  color: var(--kw-color-text);
+}
+
+:where(.kw-status--muted) {
+  color: var(--kw-color-text-muted);
+}
+
+:where(.kw-status--primary) {
+  color: var(--kw-color-primary);
+}
+
+:where(.kw-status--secondary) {
+  color: var(--kw-color-secondary);
+}
+
+:where(.kw-status--success) {
+  color: var(--kw-color-success);
+}
+
+:where(.kw-status--warning) {
+  color: var(--kw-color-warning);
+}
+
+:where(.kw-status--danger) {
+  color: var(--kw-color-danger);
+}
+
+:where(.kw-status--info) {
+  color: var(--kw-color-info);
+}

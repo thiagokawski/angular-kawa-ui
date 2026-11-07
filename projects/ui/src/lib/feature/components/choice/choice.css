@@ -1,0 +1,90 @@
+/*
+ * Tokens opcionais: --kw-choice-border (borda sem seleção), --kw-choice-radius e
+ * --kw-choice-padding. Sem eles, o padrão vem do tema.
+ */
+:where(.kw-choice) {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(var(--kw-spacing) * 3);
+  padding: var(--kw-choice-padding, calc(var(--kw-spacing) * 4));
+  border: 1px solid var(--kw-choice-border, var(--kw-color-border));
+  border-radius: var(--kw-choice-radius, var(--kw-radius-sm, calc(var(--kw-radius-md) * 0.5)));
+  background: var(--kw-color-surface);
+  color: var(--kw-color-text);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  cursor: pointer;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease;
+}
+
+/* Cor de intenção: a borda e o fundo suave do cartão marcado. */
+:where(.kw-choice--primary) {
+  --kw-choice-accent: var(--kw-color-primary);
+  --kw-choice-soft: var(
+    --kw-color-primary-soft,
+    color-mix(in oklab, var(--kw-color-primary) 15%, var(--kw-color-surface))
+  );
+}
+
+:where(.kw-choice--secondary) {
+  --kw-choice-accent: var(--kw-color-secondary);
+  --kw-choice-soft: var(
+    --kw-color-secondary-soft,
+    color-mix(in oklab, var(--kw-color-secondary) 15%, var(--kw-color-surface))
+  );
+}
+
+:where(.kw-choice--success) {
+  --kw-choice-accent: var(--kw-color-success);
+  --kw-choice-soft: var(
+    --kw-color-success-soft,
+    color-mix(in oklab, var(--kw-color-success) 15%, var(--kw-color-surface))
+  );
+}
+
+:where(.kw-choice--warning) {
+  --kw-choice-accent: var(--kw-color-warning);
+  --kw-choice-soft: var(
+    --kw-color-warning-soft,
+    color-mix(in oklab, var(--kw-color-warning) 15%, var(--kw-color-surface))
+  );
+}
+
+:where(.kw-choice--danger) {
+  --kw-choice-accent: var(--kw-color-danger);
+  --kw-choice-soft: var(
+    --kw-color-danger-soft,
+    color-mix(in oklab, var(--kw-color-danger) 15%, var(--kw-color-surface))
+  );
+}
+
+:where(.kw-choice--info) {
+  --kw-choice-accent: var(--kw-color-info);
+  --kw-choice-soft: var(
+    --kw-color-info-soft,
+    color-mix(in oklab, var(--kw-color-info) 15%, var(--kw-color-surface))
+  );
+}
+
+:where(.kw-choice:has(input:checked)) {
+  border-color: var(--kw-choice-accent, var(--kw-color-primary));
+  background: var(--kw-choice-soft, var(--kw-color-surface));
+}
+
+/* O anel fica no cartão; o controle interno não mostra o próprio anel. */
+.kw-choice :where(.kw-radio:focus-visible, .kw-checkbox:focus-visible) {
+  outline: none;
+}
+
+:where(.kw-choice:has(input:focus-visible)) {
+  outline: 2px solid var(--kw-color-focus, var(--kw-color-primary));
+  outline-offset: 2px;
+}
+
+:where(.kw-choice:has(input:disabled)) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
