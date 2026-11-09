@@ -44,6 +44,8 @@ export { kwPaginationRange } from './lib/feature/components/pagination/utils/pag
 export { KwSelect } from './lib/feature/components/select/select';
 export { KwSpinner } from './lib/feature/components/spinner/spinner';
 export { KwStatus } from './lib/feature/components/status/status';
+export { KwTabs } from './lib/feature/components/tabs/tabs';
+export { KwTab } from './lib/feature/components/tabs/tab';
 export { KwTable, KwTableContainer } from './lib/feature/components/table/table';
 export { KwTextarea } from './lib/feature/components/textarea/textarea';
 export { KwTooltip } from './lib/feature/components/tooltip/tooltip';

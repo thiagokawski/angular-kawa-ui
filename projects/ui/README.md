@@ -84,6 +84,9 @@ Um dark próprio pode usar outro mecanismo, por exemplo a preferência do sistem
 | `--kw-avatar-border` | Não | `none` | Borda do `KwAvatar` |
 | `--kw-avatar-font` | Não | `--kw-font-sans` | Fonte das iniciais do `KwAvatar` |
 | `--kw-pagination-active-background` | Não | `--kw-color-primary-soft` | Fundo da página atual do `KwPagination` |
+| `--kw-tabs-border` | Não | `--kw-color-border` | Linha inferior do `KwTabs` |
+| `--kw-tabs-indicator` | Não | `--kw-color-primary` | Indicador da aba ativa do `KwTab` |
+| `--kw-tabs-font` | Não | `--kw-font-sans` | Fonte dos rótulos do `KwTab` |
 | `--kw-checkbox-border` | Não | `--kw-color-text-muted` | Borda do `KwCheckbox` sem marcação |
 | `--kw-checkbox-radius` | Não | `--kw-radius-sm` | Raio do `KwCheckbox` |
 | `--kw-radio-border` | Não | `--kw-color-text-muted` | Borda do `KwRadio` sem marcação |
@@ -286,6 +289,24 @@ Opção em cartão: `label[kw-choice]` envolve um `kw-radio` (ou `kw-checkbox`) 
 - Desabilitado (controle com `disabled`) fica com opacidade reduzida e cursor de bloqueio.
 - Tokens: `--kw-choice-border`, `--kw-choice-radius` e `--kw-choice-padding`, na tabela acima. Em cada intenção, o fundo marcado usa `--kw-color-X-soft`.
 - O grupo é responsabilidade do app: `role="radiogroup"` com `aria-labelledby`.
+
+### KwTabs e KwTab
+
+Abas para navegação por links ou alternância por botões.
+
+```html
+<nav kw-tabs label="Seções">
+  <a kw-tab routerLink="status" routerLinkActive #a="routerLinkActive" [active]="a.isActive">Status</a>
+</nav>
+<div kw-tabs label="Visão">
+  <button kw-tab [active]="view() === 'kanban'" (click)="view.set('kanban')">Kanban</button>
+</div>
+```
+
+- `KwTabs`: `label` vira `aria-label`. Não usa `role="tablist"`, pois não há painéis controlados nem navegação por setas.
+- `KwTab` (`a[kw-tab]` ou `button[kw-tab]`): `active` marca a aba ativa. Em `<a>` define `aria-current="page"`; em `<button>` define `aria-pressed` e `type="button"` por padrão.
+- Ícone opcional (`kw-icon`) antes do texto: o espaçamento é feito por `gap`.
+- Tokens: `--kw-tabs-border`, `--kw-tabs-indicator` e `--kw-tabs-font`.
 
 ### KwTable
 

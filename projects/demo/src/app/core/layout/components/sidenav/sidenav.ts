@@ -35,6 +35,7 @@ export class Sidenav {
         { label: 'Icon Button', path: '/icon-button' },
         { label: 'Pagination', path: '/pagination' },
         { label: 'Select', path: '/select' },
+        { label: 'Tabs', path: '/tabs' },
         { label: 'Checkbox', path: '/checkbox' },
         { label: 'Table', path: '/table' },
         { label: 'Icon', path: '/icon' },

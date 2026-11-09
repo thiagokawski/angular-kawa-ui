@@ -1,0 +1,51 @@
+<div class="page">
+  <header class="page__header">
+    <h1>Tabs</h1>
+    <p>
+      <code>kw-tabs</code> e <code>kw-tab</code> — abas para navegação por links ou alternância por
+      botões.
+    </p>
+  </header>
+
+  <div class="page__sections">
+    <app-example
+      title="Botões"
+      description="Alternam um signal. Cada botão expõe aria-pressed."
+      [html]="examples.buttons"
+      [ts]="examples.buttonsTs"
+    >
+      <div kw-tabs label="Visão">
+        <button kw-tab [active]="view() === 'kanban'" (click)="view.set('kanban')">Kanban</button>
+        <button kw-tab [active]="view() === 'list'" (click)="view.set('list')">Lista</button>
+      </div>
+      <p class="status">Visão atual: {{ view() }}</p>
+    </app-example>
+
+    <app-example
+      title="Links"
+      description="Links com routerLink e routerLinkActive. Cada link ativo expõe aria-current."
+      [html]="examples.links"
+    >
+      <nav kw-tabs label="Seções">
+        <a
+          kw-tab
+          routerLink="/tabs"
+          [queryParams]="{ secao: 'a' }"
+          routerLinkActive
+          #a="routerLinkActive"
+          [active]="a.isActive"
+          >Seção A</a
+        >
+        <a
+          kw-tab
+          routerLink="/tabs"
+          [queryParams]="{ secao: 'b' }"
+          routerLinkActive
+          #b="routerLinkActive"
+          [active]="b.isActive"
+          >Seção B</a
+        >
+      </nav>
+    </app-example>
+  </div>
+</div>

@@ -54,6 +54,10 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/pagination/pagination').then((m) => m.PaginationPage),
       },
       {
+        path: 'tabs',
+        loadComponent: () => import('./pages/tabs/tabs').then((m) => m.TabsPage),
+      },
+      {
         path: 'select',
         loadComponent: () => import('./pages/select/select').then((m) => m.SelectPage),
       },
